@@ -1,0 +1,45 @@
+a:2:{s:6:"expire";d:1669538545;s:7:"headers";a:0:{}}ENDCI---><!doctype html> <html> <head> <meta charset="utf-8" /> <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <meta name="description" content="Combosale.net là website bán hàng online với các sản phẩm được chọn lọc với chất lượng và chiết khấu tốt nhất cho khách hàng." /> <meta name="keywords" content="Combo sale, bán hàng online, combosale.net,hang giam gia,hang khuyen mai" /> <meta property="og:site_name" content="Combo sale - Sale - SALE" /> <meta property="og:type" content="Website" /> <meta property="og:title" content="Combo sale - Sale - SALE" /> <meta property="og:url" content="https://combosale.net/chinh-sach-thanh-toan-105655.html" /> <meta property="og:description" content="Combosale.net là website bán hàng online với các sản phẩm được chọn lọc với chất lượng và chiết khấu tốt nhất cho khách hàng." /> <meta property="og:image" content="https://combosale.net/assets/images/combosale.jpg" /> <meta property="fb:app_id" content="124350198151002" /> <meta name="facebook-domain-verification" content="v8vnuk6xbicgysifolom2b3za3d73e" /> <title>404 - Không tìm thấy trang này</title> <link rel="icon" href="https://combosale.net/uploads/logo/favicon-combo-sale-1.ico" type="image/x-icon"> <style type="text/css">
+		    body {
+		        width: 99%;
+		        height: 100%;
+		        background-color: mediumturquoise;
+		        color: white;
+		        font-family: sans-serif;
+		    }
+
+		    div {
+		        position: absolute;
+		        width: 400px;
+		        height: 300px;
+		        z-index: 15;
+		        top: 45%;
+		        left: 50%;
+		        margin: -100px 0 0 -200px;
+		        text-align: center;
+		    }
+
+		    h1,
+		    h2 {
+		        text-align: center;
+		    }
+
+		    h1 {
+		        font-size: 60px;
+		        margin-bottom: 10px;
+		        border-bottom: 1px solid white;
+		        padding-bottom: 10px;
+		    }
+
+		    h2 {
+		        margin-bottom: 40px;
+		    }
+
+		    a {
+		        margin-top: 10px;
+		        text-decoration: none;
+		        padding: 10px 25px;
+		        background-color: ghostwhite;
+		        color: black;
+		        margin-top: 20px;
+		    }
+	    </style> </head> <body> <div> <h1>404</h1> <h2>Không tìm thấy trang yêu cầu!</h2> <a href="https://combosale.net/">Về trang chủ</a> </div> </div> </body> </html>
