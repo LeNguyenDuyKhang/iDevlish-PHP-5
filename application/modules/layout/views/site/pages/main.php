@@ -24,26 +24,56 @@
 
                         <!-- Navigation Cards -->
                         <div class="navigation-cards">
-                            <a href="<?php echo site_url('courses?category=giao-tiep'); ?>" class="nav-card card-giao-tiep" data-aos="fade-up" data-aos-delay="200">
-                                <i class="bi bi-globe"></i>
-                                <span>Giao tiếp</span>
-                            </a>
-                            <a href="<?php echo site_url('courses?category=kinh-doanh'); ?>" class="nav-card card-kinh-doanh" data-aos="fade-up" data-aos-delay="300">
-                                <i class="bi bi-briefcase"></i>
-                                <span>Kinh doanh</span>
-                            </a>
-                            <a href="<?php echo site_url('courses?category=marketing'); ?>" class="nav-card card-marketing" data-aos="fade-up" data-aos-delay="400">
-                                <i class="bi bi-clock"></i>
-                                <span>Marketing & Truyền thông</span>
-                            </a>
-                            <a href="<?php echo site_url('courses?category=vi-sach'); ?>" class="nav-card card-vi-sach" data-aos="fade-up" data-aos-delay="500">
-                                <i class="bi bi-bar-chart"></i>
-                                <span>Vì sách của phòng</span>
-                            </a>
-                            <a href="<?php echo site_url('courses?category=thiet-ke'); ?>" class="nav-card card-thiet-ke" data-aos="fade-up" data-aos-delay="600">
-                                <i class="bi bi-pencil"></i>
-                                <span>Thiết kế đồ họa</span>
-                            </a>
+                            <?php 
+                            // Load categories from database
+                            $categories = modules::run('shops/cat/gets_inhome', 5); // Limit to 5 categories
+                            $card_colors = array('card-giao-tiep', 'card-kinh-doanh', 'card-marketing', 'card-vi-sach', 'card-thiet-ke');
+                            $card_icons = array('bi-globe', 'bi-briefcase', 'bi-clock', 'bi-bar-chart', 'bi-pencil');
+                            
+                            if (is_array($categories) && !empty($categories)) {
+                                $i = 0;
+                                foreach ($categories as $category) {
+                                    $color_class = isset($card_colors[$i]) ? $card_colors[$i] : 'card-default';
+                                    $icon_class = isset($card_icons[$i]) ? $card_icons[$i] : 'bi-box';
+                                    $delay = 200 + ($i * 100);
+                                    ?>
+                                    <a href="<?php echo site_url('danh-muc-san-pham/' . $category['alias']); ?>" 
+                                       class="nav-card <?php echo $color_class; ?>" 
+                                       data-aos="fade-up" 
+                                       data-aos-delay="<?php echo $delay; ?>">
+                                        <i class="bi <?php echo $icon_class; ?>"></i>
+                                        <span><?php echo $category['name']; ?></span>
+                                    </a>
+                                    <?php
+                                    $i++;
+                                    if ($i >= 5) break; // Limit to 5 cards
+                                }
+                            } else {
+                                // Fallback if no categories from database
+                                ?>
+                                <a href="<?php echo site_url('danh-muc-san-pham'); ?>" class="nav-card card-giao-tiep" data-aos="fade-up" data-aos-delay="200">
+                                    <i class="bi bi-globe"></i>
+                                    <span>Danh mục sản phẩm</span>
+                                </a>
+                                <a href="<?php echo site_url('san-pham'); ?>" class="nav-card card-kinh-doanh" data-aos="fade-up" data-aos-delay="300">
+                                    <i class="bi bi-briefcase"></i>
+                                    <span>Sản phẩm</span>
+                                </a>
+                                <a href="<?php echo site_url('tin-tuc'); ?>" class="nav-card card-marketing" data-aos="fade-up" data-aos-delay="400">
+                                    <i class="bi bi-newspaper"></i>
+                                    <span>Tin tức</span>
+                                </a>
+                                <a href="<?php echo site_url('lien-he'); ?>" class="nav-card card-vi-sach" data-aos="fade-up" data-aos-delay="500">
+                                    <i class="bi bi-envelope"></i>
+                                    <span>Liên hệ</span>
+                                </a>
+                                <a href="<?php echo site_url('about'); ?>" class="nav-card card-thiet-ke" data-aos="fade-up" data-aos-delay="600">
+                                    <i class="bi bi-info-circle"></i>
+                                    <span>Về chúng tôi</span>
+                                </a>
+                                <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -525,9 +555,13 @@ body {
     background: linear-gradient(135deg, #ff9800, #f57c00);
 }
 
-.card-thiet-ke {
-    background: linear-gradient(135deg, #607d8b, #546e7a);
-}
+    .card-thiet-ke {
+        background: linear-gradient(135deg, #607d8b, #546e7a);
+    }
+
+    .card-default {
+        background: linear-gradient(135deg, #6c757d, #495057);
+    }
 
 /* Card Hover Effects */
 .nav-card::before {

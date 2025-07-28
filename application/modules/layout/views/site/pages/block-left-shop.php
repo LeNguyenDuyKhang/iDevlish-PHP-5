@@ -63,8 +63,5 @@
             </div>
         </div>
         <?php endif; ?>-->
-        <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12">
-            <?php echo isset($products_featured) ? $products_featured : ''; ?>
-        </div>
     </div>
 </div>
