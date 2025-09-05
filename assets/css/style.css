@@ -3409,11 +3409,11 @@
 
         .logo-left .logo {
             margin-left: 0;
-            margin-right: 30px;
+            margin-right: 0;
         }
 
         .logo {
-            line-height: 1;
+            line-height: 0;
             margin: 0;
         }
 
@@ -5027,7 +5027,7 @@
                 left: 0px;
                 top: 0px;
                 position: absolute;
-                height: 160px;
+                height: 135px;
                 background: #fff;
             }
         }

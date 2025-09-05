@@ -49,13 +49,6 @@ $current_user = get_current_user_logged_in();
         <div class="block-header-center">
             <div class="container">
                 <div class="row">
-                    <!-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                        <div class="block-header--logo">
-                            <a href="<?php echo site_url(); ?>"><img
-                                    src="<?php echo base_url(get_module_path('logo') . $site_logo); ?>"
-                                    alt="./images/logo.png" class="img-fluid"></a>
-                        </div>
-                    </div> -->
                     <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 align-seft-center">
                         <div class="box-search">
                             <form action="<?php echo base_url('search'); ?>" method="GET" autocomplete="off">
@@ -162,8 +155,8 @@ $current_user = get_current_user_logged_in();
                 </div>
             </div>
         </div>
-        <div id="masthead" class="header-main hide-for-sticky">
-            <div class="header-inner flex-row container logo-left medium-logo-center" role="navigation">
+        <div id="" class="header-main">
+            <div class="container" role="navigation">
 
                 <!-- Logo -->
                 <div id="logo" class="flex-col logo">
@@ -171,7 +164,7 @@ $current_user = get_current_user_logged_in();
                     <!-- Header logo -->
 
                     <a href="<?php echo site_url(); ?>">
-                        <img src="<?php echo base_url(get_module_path('logo') . 'logo.png'); ?>" alt="logo" class="img-fluid">
+                        <img src="<?php echo base_url(get_module_path('logo') . 'logo_iDevlish.png'); ?>" alt="logo" class="img-fluid">
                     </a>
                 </div>
             </div>
