@@ -114,7 +114,7 @@ if (empty($valid_images)) {
     </main>
 
     <!-- About Section -->
-    <section class="about-section py-5" id="about">
+    <!-- <section class="about-section py-5" id="about">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
@@ -140,121 +140,9 @@ if (empty($valid_images)) {
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section py-5 bg-light" id="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Dịch vụ của chúng tôi</h2>
-                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                        Cung cấp các giải pháp toàn diện cho hệ thống lạnh công nghiệp
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card text-center p-4 bg-white rounded shadow-sm">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-gear-fill text-primary" style="font-size: 3rem;"></i>
-                        </div>
-                        <h4 class="service-title mb-3">Thiết kế & Lắp đặt</h4>
-                        <p class="service-description">
-                            Tư vấn thiết kế và lắp đặt hệ thống lạnh công nghiệp chuyên nghiệp, 
-                            đảm bảo hiệu quả và tiết kiệm năng lượng.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-card text-center p-4 bg-white rounded shadow-sm">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-tools text-primary" style="font-size: 3rem;"></i>
-                        </div>
-                        <h4 class="service-title mb-3">Bảo trì & Sửa chữa</h4>
-                        <p class="service-description">
-                            Dịch vụ bảo trì định kỳ và sửa chữa nhanh chóng, 
-                            đảm bảo hệ thống hoạt động ổn định và bền bỉ.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-card text-center p-4 bg-white rounded shadow-sm">
-                        <div class="service-icon mb-3">
-                            <i class="bi bi-shield-check text-primary" style="font-size: 3rem;"></i>
-                        </div>
-                        <h4 class="service-title mb-3">Bảo hành & Hỗ trợ</h4>
-                        <p class="service-description">
-                            Chế độ bảo hành dài hạn và hỗ trợ kỹ thuật 24/7, 
-                            đảm bảo khách hàng luôn yên tâm khi sử dụng dịch vụ.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section class="why-choose-us py-5 bg-light" id="why-us">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Tại sao chọn chúng tôi</h2>
-                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                        Giải pháp kho lạnh tối ưu – đội ngũ kỹ sư giàu kinh nghiệm, thiết bị chính hãng
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-card bg-white rounded shadow-sm h-100 overflow-hidden">
-                        <div class="feature-image">
-                            <img src="<?php echo base_url('uploads/images/kho-lanh-chat-luong-cao.jpg'); ?>" alt="Kinh nghiệm triển khai" class="img-fluid">
-                        </div>
-                        <div class="p-3">
-                            <h5 class="feature-title mb-2">Kinh nghiệm triển khai</h5>
-                            <p class="mb-0">Hàng trăm dự án kho lạnh công nghiệp trên toàn quốc.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="feature-card bg-white rounded shadow-sm h-100 overflow-hidden">
-                        <div class="feature-image">
-                            <img src="<?php echo base_url('uploads/images/kho-lanh-chat-luong-cao-1.jpg'); ?>" alt="Thiết bị chính hãng" class="img-fluid">
-                        </div>
-                        <div class="p-3">
-                            <h5 class="feature-title mb-2">Thiết bị chính hãng</h5>
-                            <p class="mb-0">Sử dụng linh kiện, vật tư đạt tiêu chuẩn quốc tế.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="feature-card bg-white rounded shadow-sm h-100 overflow-hidden">
-                        <div class="feature-image">
-                            <img src="<?php echo base_url('uploads/images/kho-lanh-chat-luong-cao.jpg'); ?>" alt="Bảo hành & hỗ trợ" class="img-fluid">
-                        </div>
-                        <div class="p-3">
-                            <h5 class="feature-title mb-2">Bảo hành & hỗ trợ</h5>
-                            <p class="mb-0">Chính sách bảo hành dài hạn, hỗ trợ 24/7.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
-                    <div class="feature-card bg-white rounded shadow-sm h-100 overflow-hidden">
-                        <div class="feature-image">
-                            <img src="<?php echo base_url('uploads/images/kho-lanh-chat-luong-cao-1.jpg'); ?>" alt="Tối ưu năng lượng" class="img-fluid">
-                        </div>
-                        <div class="p-3">
-                            <h5 class="feature-title mb-2">Tối ưu năng lượng</h5>
-                            <p class="mb-0">Giải pháp vận hành hiệu quả, tiết kiệm chi phí.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
+    </section> -->
+    
+     <!-- Products Section -->
     <section class="products-section py-5" id="products">
         <div class="container">
             <div class="row">
@@ -327,15 +215,195 @@ if (empty($valid_images)) {
         </div>
     </section>
 
+        <!-- Teachers Section -->
+    <section class="teachers-section py-5" id="teachers">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title text-white" data-aos="fade-up">
+                        Đội ngũ thầy cô
+                    </h2>
+                    <p class="section-subtitle text-white-50" data-aos="fade-up" data-aos-delay="100">
+                        100% giáo viên bản xứ xuất sắc của chúng tôi đều được đào tạo bài
+                        bản và cấp chứng chỉ CELTA (chứng chỉ giảng dạy Anh ngữ Quốc tế
+                        của Đại học Cambridge) và TESOL (chứng chỉ quốc tế về phương pháp
+                        giảng dạy tiếng Anh).
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="teacher-card">
+                        <div class="teacher-image">
+                            <img src="uploads\users\abcdef.jpg" alt="John Mcallister" class="img-fluid" />
+                        </div>
+                        <div class="teacher-info">
+                            <h5 class="teacher-name">John Mcallister</h5>
+                            <p class="teacher-title">ĐẠI HỌC CAMBRIDGE</p>
+                            <p class="teacher-description">
+                                Chúng tôi luôn sẵn sàng hỗ trợ để bạn có thể tự tin đạt được
+                                mục tiêu cải thiện tiếng Anh của mình.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="teacher-card">
+                        <div class="teacher-image">
+                            <img src="uploads\users\abcdef.jpg" alt="Jane Doe" class="img-fluid" />
+                        </div>
+                        <div class="teacher-info">
+                            <h5 class="teacher-name">Jane Doe</h5>
+                            <p class="teacher-title">ĐẠI HỌC CAMBRIDGE</p>
+                            <p class="teacher-description">
+                                Chúng tôi luôn sẵn sàng hỗ trợ để bạn có thể tự tin đạt được
+                                mục tiêu cải thiện tiếng Anh của mình.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="teacher-card">
+                        <div class="teacher-image">
+                            <img src="uploads\users\abcdef.jpg" alt="Mary Mgrayan" class="img-fluid" />
+                        </div>
+                        <div class="teacher-info">
+                            <h5 class="teacher-name">Mary Mgrayan</h5>
+                            <p class="teacher-title">ĐẠI HỌC CAMBRIDGE</p>
+                            <p class="teacher-description">
+                                Chúng tôi luôn sẵn sàng hỗ trợ để bạn có thể tự tin đạt được
+                                mục tiêu cải thiện tiếng Anh của mình.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="teacher-card">
+                        <div class="teacher-image">
+                            <img src="uploads\users\abcdef.jpg" alt="Hanna Sprite" class="img-fluid" />
+                        </div>
+                        <div class="teacher-info">
+                            <h5 class="teacher-name">Hanna Sprite</h5>
+                            <p class="teacher-title">ĐẠI HỌC CAMBRIDGE</p>
+                            <p class="teacher-description">
+                                Chúng tôi luôn sẵn sàng hỗ trợ để bạn có thể tự tin đạt được
+                                mục tiêu cải thiện tiếng Anh của mình.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us py-5 bg-light" id="why-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">
+                        Tại sao chọn chúng tôi
+                    </h2>
+                    <p class="section-subtitle text-muted" data-aos="fade-up" data-aos-delay="100">
+                        Giữa vô vàn trung tâm dạy tiếng Anh hiện nay, chỉ có duy nhất một
+                        nơi dành riêng cho người lớn bận rộn.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <a href="<?php echo site_url('ve-chung-toi'); ?>" class="feature-card-link">
+                        <div class="feature-card">
+                            <div class="feature-image">
+                                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Yj0umPZrzxoUQa6n3JLq9wmXkU2HlN.png" alt="Cam kết của chúng tôi" class="img-fluid">
+                            </div>
+                            <div class="feature-content">
+                                <h5 class="feature-title">Cam kết của chúng tôi</h5>
+                                <p class="feature-description">
+                                    Giúp bạn nói tiếng Anh tự tin hoặc hoàn tiền. Thật khó tin? Nhưng đây là cam kết của chúng tôi.
+                                </p>
+                                <div class="feature-action">
+                                    <span class="action-text">Tìm hiểu thêm <i class="bi bi-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <a href="<?php echo site_url('ve-chung-toi'); ?>" class="feature-card-link">
+                        <div class="feature-card">
+                            <div class="feature-image">
+                                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Yj0umPZrzxoUQa6n3JLq9wmXkU2HlN.png" alt="Phương pháp hiệu quả" class="img-fluid">
+                            </div>
+                            <div class="feature-content">
+                                <h5 class="feature-title">Phương pháp hiệu quả</h5>
+                                <p class="feature-description">
+                                    Chương trình giảng dạy và chứng chỉ/văn bằng của iDevlish Ngoại Ngữ đạt chuẩn CEFR
+                                </p>
+                                <div class="feature-action">
+                                    <span class="action-text">Tìm hiểu thêm <i class="bi bi-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <a href="<?php echo site_url('ve-chung-toi'); ?>" class="feature-card-link">
+                        <div class="feature-card">
+                            <div class="feature-image">
+                                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Yj0umPZrzxoUQa6n3JLq9wmXkU2HlN.png" alt="Giờ học linh động" class="img-fluid">
+                            </div>
+                            <div class="feature-content">
+                                <h5 class="feature-title">Giờ học linh động</h5>
+                                <p class="feature-description">
+                                    Chúng tôi cung cấp các giải pháp linh hoạt, giúp bạn chủ động chọn thời gian học phù hợp
+                                </p>
+                                <div class="feature-action">
+                                    <span class="action-text">Tìm hiểu thêm <i class="bi bi-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <a href="<?php echo site_url('ve-chung-toi'); ?>" class="feature-card-link">
+                        <div class="feature-card">
+                            <div class="feature-image">
+                                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Yj0umPZrzxoUQa6n3JLq9wmXkU2HlN.png" alt="Giáo viên bản ngữ" class="img-fluid">
+                            </div>
+                            <div class="feature-content">
+                                <h5 class="feature-title">Giáo viên bản ngữ</h5>
+                                <p class="feature-description">
+                                    Giáo viên của chúng tôi đều đến từ các nước sử dụng tiếng Anh là ngôn ngữ chính như Mỹ, Anh và Canada.
+                                </p>
+                                <div class="feature-action">
+                                    <span class="action-text">Tìm hiểu thêm <i class="bi bi-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
     <!-- News Section -->
     <section class="news-section py-5 bg-light" id="news">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
                     <h2 class="section-title" data-aos="fade-up">Tin tức & Sự kiện</h2>
-                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    <!-- <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
                         Cập nhật những tin tức mới nhất về ngành lạnh
-                    </p>
+                    </p> -->
                 </div>
             </div>
             
@@ -417,7 +485,7 @@ if (empty($valid_images)) {
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section py-5" id="contact">
+    <!-- <section class="contact-section py-5" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
@@ -457,7 +525,7 @@ if (empty($valid_images)) {
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Float Contact -->
     <div class="float-contact">
@@ -734,6 +802,184 @@ if (empty($valid_images)) {
         .nav-card { width: 220px; height: 70px; font-size: 13px; }
         .nav-card i { font-size: 24px; }
     }
+
+    /* Why Choose Us Section */
+.why-choose-us {
+    background: #f8f9fa;
+}
+
+/* Feature Card Link Styles */
+.feature-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.feature-card-link:hover {
+  text-decoration: none;
+  color: inherit;
+  transform: translateY(-5px);
+}
+
+.feature-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #007bff, #28a745);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.feature-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+.feature-image {
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.feature-image img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-image img {
+  transform: scale(1.05);
+}
+
+.feature-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.feature-card:hover .feature-title {
+  color: #007bff;
+}
+
+.feature-description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.feature-action {
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+.action-text {
+  color: #007bff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.feature-card:hover .action-text {
+  color: #0056b3;
+  transform: translateX(5px);
+}
+
+.action-text i {
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover .action-text i {
+  transform: translateX(3px);
+}
+
+/* Teachers Section */
+.teachers-section {
+    background: linear-gradient(135deg, #007bff 0%, #00d0ff 100%);
+    color: white;
+}
+
+.teachers-section .section-title {
+    color: white;
+}
+
+.teacher-card {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.teacher-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.teacher-image {
+    flex: 0 0 120px;
+}
+
+.teacher-image img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.teacher-info {
+    padding: 20px;
+    flex: 1;
+}
+
+.teacher-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.teacher-title {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.teacher-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+}
 </style>
 
 <script>
