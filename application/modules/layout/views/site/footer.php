@@ -1,84 +1,97 @@
 <?php
 $current_user = get_current_user_logged_in();
 ?>
-<footer>
-    <div class="box-newsletter">
+ <footer class="footer bg-dark text-light py-5">
+    <div class="container">
+        <!-- Top section with 4 columns -->
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-title mb-3">HỌC TIẾNG ANH</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#" class="text-light-gray">Trang chủ</a></li>
+                    <li><a href="#" class="text-light-gray">Giới thiệu</a></li>
+                    <li><a href="#" class="text-light-gray">Khóa học</a></li>
+                    <li><a href="#" class="text-light-gray">Tin tức</a></li>
+                    <li><a href="#" class="text-light-gray">Liên hệ</a></li>
+                </ul>
+            </div>
 
-        <div class="block-footer--logo">
-            <img src="<?php echo base_url('assets/images/footer.png'); ?>" alt="">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-title mb-3">ƯU ĐÃI</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#" class="text-light-gray">Trang chủ</a></li>
+                    <li><a href="#" class="text-light-gray">Giới thiệu</a></li>
+                    <li><a href="#" class="text-light-gray">Khóa học</a></li>
+                    <li><a href="#" class="text-light-gray">Tin tức</a></li>
+                    <li><a href="#" class="text-light-gray">Liên hệ</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-title mb-3">TÀI LIỆU MIỄN PHÍ</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#" class="text-light-gray">Trang chủ</a></li>
+                    <li><a href="#" class="text-light-gray">Giới thiệu</a></li>
+                    <li><a href="#" class="text-light-gray">Khóa học</a></li>
+                    <li><a href="#" class="text-light-gray">Tin tức</a></li>
+                    <li><a href="#" class="text-light-gray">Liên hệ</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-title mb-3">TIỆN ÍCH</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#" class="text-light-gray">Trang chủ</a></li>
+                    <li><a href="#" class="text-light-gray">Giới thiệu</a></li>
+                    <li><a href="#" class="text-light-gray">Khóa học</a></li>
+                    <li><a href="#" class="text-light-gray">Tin tức</a></li>
+                    <li><a href="#" class="text-light-gray">Liên hệ</a></li>
+                </ul>
+            </div>
         </div>
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 align-seft-center">
-                    <div class="block--title">
-                        <h3 class="main--title">Đăng kí nhận tin khuyến mãi</h3>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                    <div class="block-newsletter--form">
-                        <form method="POST" action="<?php echo base_url('newsletter'); ?>" id="newsletter-signup">
-                            <div class="input-group">
-                                <input type="email" id="signup_email" name="signup_email"
-                                    class="form-control input--field" placeholder="Nhập email của bạn ...">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn--newsletter">Đăng ký</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+
+        <!-- Bottom section -->
+        <div class="row align-items-center">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h5 class="footer-title mb-3">HỆ THỐNG TRUNG TÂM</h5>
+                <p class="text-light-gray mb-3">
+                    iDevlish Ngoại Ngữ hiện có tổng cộng 20 trung tâm tại Việt Nam.
+                </p>
+                <a href="#" class="text-light-gray text-decoration-none">
+                    <i class="bi bi-eye me-2"></i>Xem chi tiết
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-4 mb-lg-0 text-center">
+                <h5 class="footer-title mb-3">KẾT NỐI VỚI CHÚNG TÔI</h5>
+                <div class="social-links">
+                    <a href="#" class="social-link twitter">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link facebook">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="#" class="social-link pinterest">
+                        <i class="bi bi-pinterest"></i>
+                    </a>
+                    <a href="#" class="social-link google">
+                        <i class="bi bi-google"></i>
+                    </a>
+                    <a href="#" class="social-link email">
+                        <i class="bi bi-envelope"></i>
+                    </a>
+                    <a href="#" class="social-link youtube">
+                        <i class="bi bi-youtube"></i>
+                    </a>
                 </div>
             </div>
-        </div> -->
-    </div>
-    <div class="box-footer">
-        <div class="container">
-            <div class="block-footer">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-12 cot1">
-                        <div class="block-footer--title">
-                            <div class="block-footer--title">
-                                <h3>CÔNG TY TNHH KHO LẠNH HƯNG TÍN</h3>
-                            </div>
-                            <ul>
-                                <li>
-                                    <p>
-                                        <?php echo isset($info_address_none['title']) ? $info_address_none['title'] : ''; ?>:
-                                        <?php echo isset($info_address_none['content']) ? $info_address_none['content'] : ''; ?>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p> <?php echo isset($info_hotline_none['title']) ? $info_hotline_none['title'] : ''; ?>:
-                                        <?php echo isset($current_user['phone']) ? $current_user['phone'] : (isset($info_hotline_none['content']) ? $info_hotline_none['content'] : ''); ?></p>
-                                </li>
-                                <li>
-                                    <p><?php echo isset($info_email_none['title']) ? $info_email_none['title'] : ''; ?>:
-                                        <?php echo isset($current_user['email']) ? $current_user['email'] : (isset($info_email_none['content']) ? $info_email_none['content'] : ''); ?></p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                        <div class="block-footer--title">
-                            <h3>LIÊN KẾT</h3>
-                        </div>
-                        <div class="block-footer--list">
-                            <ul>
-                                <?php echo isset($html_menu_bottom) ? $html_menu_bottom : ''; ?>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-md-5 col-sm-12">
+
+            <div class="col-lg-4">
                         <div class="block-footer--title">
                             <div class="block-footer--title">
                                 <h3>ĐĂNG KÝ NHẬN TIN</h3>
                             </div>
-                            <p style="color:#fff">Mỗi tháng chúng tối đều có đợt giảm giá dịch
-                                vụ và sản phẩm nhầm chi
-                                ân khách hàng. Để có thể cập nhật kịp thời
-                                những đợt giảm giá này,
-                                vui lòng nhập địa chỉ email bạn vào ô dưới
-                                đây.
-                            </p>
+                            
                             <div class="block-newsletter--form">
                                 <form method="POST" action="<?php echo base_url('newsletter'); ?>" id="newsletter-signup">
                                     <div class="input-group">
@@ -91,122 +104,458 @@ $current_user = get_current_user_logged_in();
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-                        <div class="block-footer--logo">
-                            <a href="<?php echo site_url(); ?>"><img src="<?php echo base_url(get_module_path('logo') . $site_logo_footer); ?>" alt="./images/logo_footer.png" class="img-fluid"></a>
-                        </div>
-                        <div class="block-footer--address">
-                            <h3>
-                                <?php echo isset($info_infomation_none['content']) ? $info_infomation_none['content'] : ''; ?>
-                            </h3>
-                            <ul>
-                                <li><?php echo isset($info_address_none['title']) ? $info_address_none['title'] : ''; ?>:
-                                    <?php echo isset($info_address_none['content']) ? $info_address_none['content'] : ''; ?>
-                                </li>
-                                <li><?php echo isset($info_hotline_none['title']) ? $info_hotline_none['title'] : ''; ?>:
-                                    <?php echo isset($current_user['phone']) ? $current_user['phone'] : (isset($info_hotline_none['content']) ? $info_hotline_none['content'] : ''); ?>
-                                </li>
-                                <li><?php echo isset($info_email_none['title']) ? $info_email_none['title'] : ''; ?>:
-                                    <?php echo isset($current_user['email']) ? $current_user['email'] : (isset($info_email_none['content']) ? $info_email_none['content'] : ''); ?>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
-                    <!-- <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-                            <div class="row"> -->
-                    <!-- <div class="col-xl-4 col-lg-4 col-md-3 col-sm-12 col-6">
-                                <div class="block-footer--title">
-                                    <h3>LIÊN KẾT</h3>
-                                </div>
-                                <div class="block-footer--list">
-                                    <ul>
-                                        <?php echo isset($html_menu_bottom) ? $html_menu_bottom : ''; ?>
-                                    </ul>
-                                </div>
-                            </div> -->
+        </div>
 
-                    <!--<div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
-                                <div class="block-footer--contact">
-                                    <div class="block-footer--title">
-                                        <h3>Kết nối với chúng tôi</h3>
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            <a href="<?php echo isset($facebook_fanpage) ? $facebook_fanpage : ''; ?>"><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo isset($twitter_page) ? $twitter_page : ''; ?>"><i
-                                                    class="fab fa-twitter"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo isset($google_plus) ? $google_plus : ''; ?>"><i
-                                                    class="fab fa-google"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo isset($instagram_page) ? $instagram_page : ''; ?>"><i
-                                                    class="fab fa-instagram"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo isset($youtube_page) ? $youtube_page : ''; ?>"><i
-                                                    class="fab fa-youtube"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <?php if (isset($payment_methods_none) && is_array($payment_methods_none) && !empty($payment_methods_none)) :
-                                    $data_src = get_image(get_module_path('images') . $payment_methods_none['image'], get_module_path('images') . 'no-image.png');
-                                ?>
-                                  <div class="block-footer--payment">
-                                      <div class="block-footer--title">
-                                          <h3><?php echo $payment_methods_none['title'] ?></h3>
-                                      </div>
-                                      <a href="<?php echo $payment_methods_none['link'] ?>"><img
-                                              src="<?php echo $data_src ?>" alt="./images/i_payment.png"
-                                              class="img-fluid">
-                                      </a>
-                                  </div>
-                                <?php endif; ?>
-                            </div>-->
-
-                    <!-- <div class="col-xl-8 col-lg-8 col-md-6 col-sm-12 ">
-                                <div class="block-footer--title">
-                                    <h3>fANPAGE</h3>
-                                </div>
-                                <div class="embed-responsivee overflow-hidden">
-                                    <?php echo isset($fb_page) ? $fb_page : ''; ?>
-                                </div>
-
-                            </div> -->
-                </div>
-            </div>
+        <!-- Copyright -->
+        <hr class="my-3 border-secondary">
+        <div class="text-center">
+            <p class="mb-0">
+                © Bản quyền thuộc về Kiến Vàng | Cung cấp bởi <strong>Sapo</strong>
+            </p>
         </div>
     </div>
-    </div>
-    </div>
-    <div class="absolute-footer">
-        <div class="container clearfix">
-            <div class="footer-secondary pull-right">
-                <?php echo isset($info_hotline_none['title']) ? $info_hotline_none['title'] : ''; ?>:
-                <?php echo isset($current_user['phone']) ? $current_user['phone'] : (isset($info_hotline_none['content']) ? $info_hotline_none['content'] : ''); ?></p>
-            </div>
-            <div class="footer-primary pull-left">
-                <?php echo isset($info_copyright_none['content']) ? $info_copyright_none['content'] : ''; ?>
-
-            </div>
-        </div>
-    </div>
-    <!-- <div class="box-copyright">
-        <?php echo isset($info_copyright_none['content']) ? $info_copyright_none['content'] : ''; ?>
-    </div> -->
-    </div>
-    <div class="hotline-footer">
-        <div class="left">
-            <a href="">Chat với tư vấn
-                viên</a>
-        </div>
-        <div class="right">
-            <a href="">Gọi ngay</a>
-        </div>
-        <div class="clearboth"></div>
-        </body>
 </footer>
+
+<style>
+    .footer {
+    background-color: #343a46 !important;
+    color: #ffffff;
+}
+
+.footer-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: #b8bcc8;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.text-light-gray {
+    color: #b8bcc8 !important;
+}
+
+.text-light-gray:hover {
+    color: #ffffff !important;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.social-link.twitter {
+    background-color: #1da1f2;
+}
+
+.social-link.facebook {
+    background-color: #3b5998;
+}
+
+.social-link.pinterest {
+    background-color: #bd081c;
+}
+
+.social-link.google {
+    background-color: #dd4b39;
+}
+
+.social-link.email {
+    background-color: #34495e;
+}
+
+.social-link.youtube {
+    background-color: #ff0000;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+}
+
+/* Newsletter Form */
+.newsletter-form .input-group {
+    max-width: 100%;
+}
+
+.newsletter-input {
+    border: none;
+    border-radius: 0;
+    padding: 12px 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+}
+
+.newsletter-input:focus {
+    box-shadow: none;
+    border-color: #dc3545;
+    outline: none;
+}
+
+.newsletter-btn {
+    border-radius: 0;
+    padding: 12px 25px;
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.newsletter-btn:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .footer-title {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .footer {
+        padding: 3rem 0;
+    }
+    
+    .row.mb-5 {
+        margin-bottom: 3rem !important;
+    }
+    
+    .social-links {
+        justify-content: center;
+        margin: 1.5rem 0;
+    }
+    
+    .col-lg-4:nth-child(2) {
+        order: 3;
+    }
+    
+    .col-lg-4:nth-child(3) {
+        order: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        text-align: center;
+        padding: 2.5rem 0;
+    }
+    
+    .footer-title {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-links {
+        margin-bottom: 2rem;
+    }
+    
+    .footer-links li {
+        margin-bottom: 0.75rem;
+    }
+    
+    .social-links {
+        justify-content: center;
+        margin-bottom: 2rem;
+        gap: 12px;
+    }
+    
+    .newsletter-form {
+        margin-top: 1rem;
+    }
+    
+    .newsletter-form .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .newsletter-input {
+        display: block;
+        width: 100% !important;
+        min-width: 0;
+        margin-bottom: 0;
+        border-radius: 5px !important;
+        box-sizing: border-box;
+    }
+    .newsletter-btn {
+        width: 100% !important;
+        border-radius: 5px !important;
+        margin-top: 0;
+    }
+    
+    .newsletter-btn {
+        margin-top: 0;
+    }
+    
+    /* Stack columns vertically on tablets */
+    .col-md-6 {
+        margin-bottom: 2rem;
+    }
+    
+    /* Center align bottom section content */
+    .row.align-items-center > div {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .row.align-items-center > div:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: 2rem 0;
+    }
+    
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .footer-title {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-links a {
+        font-size: 0.9rem;
+    }
+    
+    .social-links {
+        gap: 8px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .social-link {
+        width: 38px;
+        height: 38px;
+        font-size: 0.95rem;
+    }
+    
+    .newsletter-input,
+    .newsletter-btn {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .newsletter-form p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Adjust spacing for mobile */
+    .row.mb-5 {
+        margin-bottom: 2rem !important;
+    }
+    
+    .col-lg-3,
+    .col-md-6 {
+        margin-bottom: 1.5rem;
+    }
+    
+    .col-lg-3:last-child,
+    .col-md-6:last-child {
+        margin-bottom: 2rem;
+    }
+    
+    /* Copyright section */
+    .text-center p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        color: #fff;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 1.5rem 0;
+    }
+    
+    .footer-title {
+        font-size: 0.95rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .footer-links a {
+        font-size: 0.85rem;
+    }
+    
+    .footer-links li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .social-link {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .newsletter-input,
+    .newsletter-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .newsletter-form p,
+    .text-light-gray {
+        font-size: 0.85rem;
+    }
+    
+    /* Ultra-compact spacing for very small screens */
+    .row.mb-5 {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .col-lg-3,
+    .col-md-6 {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Landscape phone orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+    .footer {
+        padding: 2rem 0;
+    }
+    
+    .social-links {
+        gap: 10px;
+    }
+    
+    .social-link {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Large screens optimization */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+    
+    .footer-title {
+        font-size: 1.2rem;
+    }
+    
+    .footer-links a {
+        font-size: 1rem;
+    }
+    
+    .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .footer {
+        background-color: transparent !important;
+        color: #000 !important;
+    }
+    
+    .social-links,
+    .newsletter-form {
+        display: none;
+    }
+    
+    .footer-links a {
+        color: #000 !important;
+        text-decoration: underline;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .footer {
+        border-top: 2px solid #fff;
+    }
+    
+    .footer-links a:hover,
+    .text-light-gray:hover {
+        background-color: #fff;
+        color: #000 !important;
+        padding: 2px 4px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .social-link,
+    .footer-links a,
+    .newsletter-btn {
+        transition: none;
+    }
+    
+    .social-link:hover {
+        transform: none;
+    }
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+</style>

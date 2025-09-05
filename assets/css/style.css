@@ -1,25 +1,24 @@
 .wsmenu-list > li.dropdown > a {
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 26px;
     color: #174ea6;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: color 0.2s;
-}
-    background: #fff;
-    transition: background 0.2s, color 0.2s;
+
+    
 }
 .wsmenu-list > li.dropdown .dropdown-menu li a:hover,
 .wsmenu-list > li.dropdown .dropdown-menu li a:focus {
-    background: #2196f3;
-    color: #fff;
+    
+    color:#145a8d;
     letter-spacing: 0.5px;
     transition: background 0.2s, color 0.2s;
 }
 .wsmenu-list > li.dropdown .dropdown-menu li a:hover {
-    background: #2196f3;
-    color: #fff;
+    
+    color: #145a8d;
 }
 /* Dropdown hover effect for main menu */
 .wsmenu-list > li.dropdown {
@@ -47,15 +46,16 @@
     transition: opacity 0.2s;
 }
 .wsmenu-list > li.dropdown .dropdown-menu li a {
-    padding: 10px 18px;
-    font-size: 15px;
-    color: #222;
+    font-size: 14px;
+    line-height: 24px;
     display: block;
-    white-space: nowrap;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 12px 10px 12px 0px;
+    color: #222463;
+    border-bottom: solid 1px #f4f4f4;
 }
 .wsmenu-list > li.dropdown .dropdown-menu li a:hover {
-    background: #2196f3;
-    color: #fff;
+    color: #145a8d;
 }
 /* Dropdown menu alignment for main menu */
 .wsmenu-list > li.dropdown {
@@ -77,8 +77,11 @@
 }
 .wsmenu-list > li.dropdown .dropdown-menu li a {
     padding: 10px 18px;
-    font-size: 15px;
-    color: #222;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222463;
 }
         @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@400;700&family=Roboto:ital,wght@0,700;1,700&display=swap");
         /*------------- VARIABLE DECLARATIONS -------------*/
