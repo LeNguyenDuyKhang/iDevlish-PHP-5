@@ -143,8 +143,13 @@ $current_user = get_current_user_logged_in();
                         <nav class="wsmenu clearfix">
                             <ul class="wsmenu-list">
                                 <?php echo isset($html_menu_main) ? $html_menu_main : ''; ?>
-                                <li><a href="<?php echo site_url('ve-chung-toi'); ?>">Về chúng tôi</a></li>
-                                <li><a href="<?php echo site_url('tai-sao-chon-chung-toi'); ?>">Tại sao chọn chúng tôi</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Giới thiệu <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?php echo site_url('ve-chung-toi'); ?>">Về chúng tôi</a></li>
+                                        <li><a href="<?php echo site_url('tai-sao-chon-chung-toi'); ?>">Tại sao chọn chúng tôi</a></li>
+                                    </ul>
+                                </li>
                                 <?php //echo menu_main(0, $menu_main_list, $menu_main_data, 0);
                                 ?>
                             </ul>
