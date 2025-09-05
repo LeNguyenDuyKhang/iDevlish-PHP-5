@@ -1,19 +1,19 @@
 <?php
 // Define background images array (use relative paths from web root)
 $background_images = array(
-    array('url' => base_url('assets/images/slider1.png'), 'alt' => 'Services Background'),
-    array('url' => base_url('assets/images/slider2.png'), 'alt' => 'Hero Background'),
+    array('url' => base_url('uploads/images/kho-lanh-chat-luong-cao.jpg'), 'alt' => 'Kho lạnh công nghiệp'),
+    array('url' => base_url('uploads/images/kho-lanh-chat-luong-cao-1.jpg'), 'alt' => 'Hệ thống kho lạnh hiện đại'),
     // Add more images as needed
 );
 
 // Fallback image if none are available
-$fallback_image = array('url' => base_url('assets/images/fallback.jpg'), 'alt' => 'Fallback Background');
+$fallback_image = array('url' => base_url('uploads/images/kho-lanh-chat-luong-cao.jpg'), 'alt' => 'Kho lạnh công nghiệp');
 
 // Check if images exist (basic file existence check for debugging)
 $valid_images = array();
 foreach ($background_images as $image) {
     // Convert base_url to file path for checking (assumes CodeIgniter structure)
-    $file_path = FCPATH . 'assets/images/' . basename($image['url']);
+    $file_path = FCPATH . 'uploads/images/' . basename($image['url']);
     if (file_exists($file_path)) {
         $valid_images[] = $image;
     }
@@ -188,6 +188,66 @@ if (empty($valid_images)) {
                             Chế độ bảo hành dài hạn và hỗ trợ kỹ thuật 24/7, 
                             đảm bảo khách hàng luôn yên tâm khi sử dụng dịch vụ.
                         </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us py-5 bg-light" id="why-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Tại sao chọn chúng tôi</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        Giải pháp kho lạnh tối ưu – đội ngũ kỹ sư giàu kinh nghiệm, thiết bị chính hãng
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card bg-white rounded shadow-sm h-100 overflow-hidden">
+                        <div class="feature-image">
+                            <img src="<?php echo base_url('uploads/images/kho-lanh-chat-luong-cao.jpg'); ?>" alt="Kinh nghiệm triển khai" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h5 class="feature-title mb-2">Kinh nghiệm triển khai</h5>
+                            <p class="mb-0">Hàng trăm dự án kho lạnh công nghiệp trên toàn quốc.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card bg-white rounded shadow-sm h-100 overflow-hidden">
+                        <div class="feature-image">
+                            <img src="<?php echo base_url('uploads/images/kho-lanh-chat-luong-cao-1.jpg'); ?>" alt="Thiết bị chính hãng" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h5 class="feature-title mb-2">Thiết bị chính hãng</h5>
+                            <p class="mb-0">Sử dụng linh kiện, vật tư đạt tiêu chuẩn quốc tế.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card bg-white rounded shadow-sm h-100 overflow-hidden">
+                        <div class="feature-image">
+                            <img src="<?php echo base_url('uploads/images/kho-lanh-chat-luong-cao.jpg'); ?>" alt="Bảo hành & hỗ trợ" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h5 class="feature-title mb-2">Bảo hành & hỗ trợ</h5>
+                            <p class="mb-0">Chính sách bảo hành dài hạn, hỗ trợ 24/7.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-card bg-white rounded shadow-sm h-100 overflow-hidden">
+                        <div class="feature-image">
+                            <img src="<?php echo base_url('uploads/images/kho-lanh-chat-luong-cao-1.jpg'); ?>" alt="Tối ưu năng lượng" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h5 class="feature-title mb-2">Tối ưu năng lượng</h5>
+                            <p class="mb-0">Giải pháp vận hành hiệu quả, tiết kiệm chi phí.</p>
+                        </div>
                     </div>
                 </div>
             </div>

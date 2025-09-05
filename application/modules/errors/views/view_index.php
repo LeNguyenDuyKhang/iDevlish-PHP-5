@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
     <head>
         <meta charset="UTF-8" />
         <title>Thông báo lỗi không tìm thấy trang yêu cầu - 404 Not Found</title>

@@ -545,6 +545,10 @@ $route["danh-muc-bai-viet/(:any)"] = "posts/site_items_in_cat/$1";
 
 $route["lien-he"] = "contact/contact/index";
 
+// New static pages
+$route['ve-chung-toi'] = 'layout/site_about';
+$route['tai-sao-chon-chung-toi'] = 'layout/site_why_choose_us';
+
 $route["shop/(:any)"] = "shops/rows/site_items_in_user/$1";
 $route["shop/(:any)/(:num)"] = "shops/rows/site_items_in_user/$1/$2";
 $route["(:any)/(:any)"] = "posts/site_details/$1";

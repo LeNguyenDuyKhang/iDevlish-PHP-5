@@ -661,6 +661,20 @@ class Layout extends MX_Controller {
 		$this->load->view('site/layout', $this->_data);
 	}
 
+	public function site_about() {
+		$this->_initialize();
+		$this->_data['title_seo'] = 'Về chúng tôi';
+		$this->_data['main_content'] = 'layout/site/pages/about';
+		$this->load->view('site/layout', $this->_data);
+	}
+
+	public function site_why_choose_us() {
+		$this->_initialize();
+		$this->_data['title_seo'] = 'Tại sao chọn chúng tôi';
+		$this->_data['main_content'] = 'layout/site/pages/why-choose-us';
+		$this->load->view('site/layout', $this->_data);
+	}
+	
 	protected function logged_in() {
 		if ($this->session->userdata('logged_in')) {
 			return TRUE;
