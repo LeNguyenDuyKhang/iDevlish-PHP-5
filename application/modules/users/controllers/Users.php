@@ -4,30 +4,35 @@ if (!defined('BASEPATH')) {
 }
 include_once APPPATH . '/modules/layout/controllers/Layout.php';
 
-class Users extends Layout {
+class Users extends Layout
+{
 
     private $_remember_name = 'siteAuth';
     public $_users_path = '';
 
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
         $this->_data['breadcrumbs_module_name'] = 'Tài khoản';
         $this->_users_path = get_module_path('users');
     }
 
-    private function __encrip_password($password) {
+    private function __encrip_password($password)
+    {
         return md5($password);
     }
 
-    private function __get_refer_key() {
+    private function __get_refer_key()
+    {
         $refer_key = strtolower(random_string('alpha', 3)) . '-' . random_string('numeric', 3);
-        while(!$this->M_users->check_refer_key_availablity($refer_key)){
+        while (!$this->M_users->check_refer_key_availablity($refer_key)) {
             $refer_key = strtolower(random_string('alpha', 3)) . '-' . random_string('numeric', 3);
         }
         return $refer_key;
     }
 
-    function login_attempt($seconds) {
+    function login_attempt($seconds)
+    {
         $this->load->model('users/m_users_attempts', 'M_users_attempts');
         $ip = $_SERVER['REMOTE_ADDR'];
         $oldest = strtotime(date("Y-m-d H:i:s") . " - " . $seconds . " seconds");
@@ -37,13 +42,15 @@ class Users extends Layout {
         $insert = $this->M_users_attempts->add($data);
     }
 
-    function login_attempt_count() {
+    function login_attempt_count()
+    {
         $this->load->model('users/m_users_attempts', 'M_users_attempts');
         $ip = $_SERVER['REMOTE_ADDR'];
         return $this->M_users_attempts->counts(array('ip' => $ip));
     }
 
-    function ajax_login_attempt_reset() {
+    function ajax_login_attempt_reset()
+    {
         if (!$this->input->is_ajax_request()) {
             exit('No direct script access allowed');
         }
@@ -72,7 +79,8 @@ class Users extends Layout {
         exit();
     }
 
-    function ajax_search() {
+    function ajax_search()
+    {
         if (!$this->input->is_ajax_request()) {
             exit('No direct script access allowed');
         }
@@ -80,9 +88,9 @@ class Users extends Layout {
 
         $post = $this->input->post();
         if (!empty($post)) {
-            if($this->input->post('user_id')){
+            if ($this->input->post('user_id')) {
                 $user_id = (int) $this->input->post('user_id');
-            }else{
+            } else {
                 $user_id = get_current_user_id();
             }
 
@@ -96,7 +104,8 @@ class Users extends Layout {
         exit();
     }
 
-    function ajax_json_tree() {
+    function ajax_json_tree()
+    {
         if (!$this->input->is_ajax_request()) {
             exit('No direct script access allowed');
         }
@@ -106,11 +115,11 @@ class Users extends Layout {
             $id = $this->input->post('id');
             if ($id == '#') {
                 $this->_initialize_user();
-                if(isset($this->_data['userid'])){
+                if (isset($this->_data['userid'])) {
                     $parent_id = (int) $this->_data['userid'];
                     $childs = $this->M_users->get_childs_tree($parent_id);
-                    if(is_array($childs) && !empty($childs)){
-                        foreach ($childs as $key => $item){
+                    if (is_array($childs) && !empty($childs)) {
+                        foreach ($childs as $key => $item) {
                             $root = (int) $item['userid'];
                             //$revenue = formatRice(get_buy_user($root, TRUE));
                             $revenue = formatRice(get_balance_package_user($root));
@@ -122,7 +131,7 @@ class Users extends Layout {
                                 ],
                             ];
                             $counts_sub_childs = $this->M_users->counts_childs_tree($root);
-                            if($counts_sub_childs > 0){
+                            if ($counts_sub_childs > 0) {
                                 $child["children"] = true;
                             }
                             $data[] = $child;
@@ -132,8 +141,8 @@ class Users extends Layout {
             } else {
                 $parent_id = (int) $id;
                 $childs = $this->M_users->get_childs_tree($parent_id);
-                if(is_array($childs) && !empty($childs)){
-                    foreach ($childs as $key => $item){
+                if (is_array($childs) && !empty($childs)) {
+                    foreach ($childs as $key => $item) {
                         $root = (int) $item['userid'];
                         //$revenue = formatRice(get_buy_user($root, TRUE));
                         $revenue = formatRice(get_balance_package_user($root));
@@ -143,7 +152,7 @@ class Users extends Layout {
                             "state" => "opened",
                         ];
                         $counts_sub_childs = $this->M_users->counts_childs_tree($root);
-                        if($counts_sub_childs > 0){
+                        if ($counts_sub_childs > 0) {
                             $child["state"] = "closed";
                             $child["children"] = true;
                         }
@@ -157,7 +166,8 @@ class Users extends Layout {
         exit();
     }
 
-    function ajax_get() {
+    function ajax_get()
+    {
         if (!$this->input->is_ajax_request()) {
             exit('No direct script access allowed');
         }
@@ -185,7 +195,8 @@ class Users extends Layout {
         exit();
     }
 
-    function get_shop_id() {
+    function get_shop_id()
+    {
         $shop_id = $this->get_max_shop_id();
         while (!$this->M_users->check_shop_id_availablity($shop_id)) {
             $shop_id = $this->get_max_shop_id();
@@ -194,7 +205,8 @@ class Users extends Layout {
         return $shop_id;
     }
 
-    function get_max_shop_id() {
+    function get_max_shop_id()
+    {
         $args = $this->default_args();
         $order_by = array(
             'shop_id' => 'DESC',
@@ -205,7 +217,8 @@ class Users extends Layout {
         return $shop_id;
     }
 
-    function admin_change_shop_status_ajax() {
+    function admin_change_shop_status_ajax()
+    {
         if (!$this->input->is_ajax_request()) {
             exit('No direct script access allowed');
         }
@@ -257,7 +270,8 @@ class Users extends Layout {
         exit();
     }
 
-    function default_args() {
+    function default_args()
+    {
         $order_by = array(
             'userid' => 'DESC',
             'full_name' => 'ASC',
@@ -268,7 +282,8 @@ class Users extends Layout {
         return $args;
     }
 
-    function counts($options = array()) {
+    function counts($options = array())
+    {
         $default_args = $this->default_args();
 
         if (is_array($options) && !empty($options)) {
@@ -279,7 +294,8 @@ class Users extends Layout {
         return $this->M_users->counts($args);
     }
 
-    function gets($options = array()) {
+    function gets($options = array())
+    {
         $default_args = $this->default_args();
 
         if (is_array($options) && !empty($options)) {
@@ -290,11 +306,13 @@ class Users extends Layout {
         return $this->M_users->gets($args);
     }
 
-    function get($id) {
+    function get($id)
+    {
         return $this->M_users->get($id);
     }
 
-	function get_by($options = array()) {
+    function get_by($options = array())
+    {
         $default_args = $this->default_args();
 
         if (is_array($options) && !empty($options)) {
@@ -305,29 +323,35 @@ class Users extends Layout {
         return $this->M_users->get_by($args);
     }
 
-    function gets_in_group($args) {
+    function gets_in_group($args)
+    {
         return $this->M_users->gets($args);
     }
 
-    function get_num_all_data() {
+    function get_num_all_data()
+    {
         return $this->counts(array());
     }
 
-    function get_num_new_data() {
+    function get_num_new_data()
+    {
         return $this->counts(array('active' => 0));
     }
 
-    function set_last_login($userid) {
+    function set_last_login($userid)
+    {
         $data = array('last_login' => time());
         return $this->M_users->update($userid, $data);
     }
 
-    function set_last_ip($userid) {
+    function set_last_ip($userid)
+    {
         $data = array('last_ip' => $this->input->ip_address());
         return $this->M_users->update($userid, $data);
     }
 
-    function set_last_agent($userid) {
+    function set_last_agent($userid)
+    {
         $this->load->library('user_agent');
 
         if ($this->agent->is_browser()) {
@@ -345,7 +369,8 @@ class Users extends Layout {
         return $this->M_users->update($userid, $data);
     }
 
-    function index_shop() {
+    function index_shop()
+    {
         $this->_initialize_admin();
         $this->redirect_admin();
 
@@ -434,8 +459,9 @@ class Users extends Layout {
         $this->load->view('layout/admin/view_layout', $this->_data);
     }
 
-    function index() {
-		$this->_initialize_admin();
+    function index()
+    {
+        $this->_initialize_admin();
         $this->redirect_admin();
 
         /*
@@ -529,8 +555,8 @@ class Users extends Layout {
         $pagination = $this->pagination->create_links();
         $offset = ($this->uri->segment($segment) == '') ? 0 : $this->uri->segment($segment);
         $this->_data['pagination'] = $pagination;
-		$rows = $this->M_users->gets($args, $perpage, $offset);
-		$this->_data['rows'] = $rows;
+        $rows = $this->M_users->gets($args, $perpage, $offset);
+        $this->_data['rows'] = $rows;
 
         $this->_data['breadcrumbs_module_func'] = 'Danh sách thành viên';
         $this->_data['title'] = 'Danh sách thành viên - ' . $this->_data['title'];;
@@ -538,7 +564,8 @@ class Users extends Layout {
         $this->load->view('layout/admin/view_layout', $this->_data);
     }
 
-    function admin_ref_setting() {
+    function admin_ref_setting()
+    {
         $this->_initialize_admin();
         $this->redirect_admin();
 
@@ -547,7 +574,7 @@ class Users extends Layout {
         $row = modules::run('users/get', $user_id);
         $this->_module_slug = 'users';
         $this->_data['module_slug'] = $this->_module_slug;
-        if(!(is_array($row) && !empty($row))){
+        if (!(is_array($row) && !empty($row))) {
             redirect(get_admin_url($this->_module_slug));
         }
         $this->_data['row'] = $row;
@@ -611,7 +638,8 @@ class Users extends Layout {
         $this->load->view('layout/admin/view_layout', $this->_data);
     }
 
-    function admin_profile() {
+    function admin_profile()
+    {
         $this->_initialize_admin();
         $this->redirect_admin();
 
@@ -662,7 +690,7 @@ class Users extends Layout {
             $this->lang->load('form_validation', 'vietnamese');
             $this->lang->load('user', 'vietnamese');
 
-            if ($this->input->post('userid')) {//update
+            if ($this->input->post('userid')) { //update
                 $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
                 $this->form_validation->set_rules('username', 'Tên đăng nhập', 'trim|required|callback_check_current_username_availablity|min_length[2]|max_length[60]');
                 $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|callback_check_current_email_availablity');
@@ -751,8 +779,9 @@ class Users extends Layout {
         $this->load->view('layout/admin/view_layout', $this->_data);
     }
 
-    function admin_content() {
-		$this->_initialize_admin();
+    function admin_content()
+    {
+        $this->_initialize_admin();
         $this->redirect_admin();
 
         $this->_plugins_css_admin[] = array(
@@ -814,7 +843,7 @@ class Users extends Layout {
             'name' => 'fileinput.min'
         );
 
-		/*$this->_plugins_css_admin[] = array(
+        /*$this->_plugins_css_admin[] = array(
             'folder' => 'chosen',
             'name' => 'chosen'
         );
@@ -839,7 +868,7 @@ class Users extends Layout {
             $this->form_validation->set_rules('passconf', 'Lặp lại mật khẩu', 'alpha_numeric|matches[password]');
 
             if ($this->form_validation->run($this)) {
-				$data_products = $this->input->post('products');
+                $data_products = $this->input->post('products');
                 if ($this->input->post('userid')) {
                     $userid = $this->input->post('userid');
                     $username = $this->input->post('username');
@@ -848,9 +877,9 @@ class Users extends Layout {
                         'username' => $username,
                         'email' => $this->input->post('email'),
                         'full_name' => $this->input->post('full_name'),
-						'phone' => $this->input->post('phone'),
+                        'phone' => $this->input->post('phone'),
                         'level' => $this->input->post('level'),
-						'address' => $this->input->post('address'),
+                        'address' => $this->input->post('address'),
                         'gender' => $this->input->post('gender'),
                         'modified' => time(),
                     );
@@ -864,37 +893,37 @@ class Users extends Layout {
                         );
                         modules::run('users/groups_users/update', $userid, $data_groups_users);
 
-						//products
-						$data_users_permision_product = modules::run('users/users_permision_product/gets', array('user_id' => $userid, 'type' => 'DEFAULT'));
-						$data_products_current = (is_array($data_users_permision_product) && !empty($data_users_permision_product)) ? array_column($data_users_permision_product, 'product_id', 'id') : array(-1);
+                        //products
+                        $data_users_permision_product = modules::run('users/users_permision_product/gets', array('user_id' => $userid, 'type' => 'DEFAULT'));
+                        $data_products_current = (is_array($data_users_permision_product) && !empty($data_users_permision_product)) ? array_column($data_users_permision_product, 'product_id', 'id') : array(-1);
 
-						$in_product_id = array_diff((array)$data_products_current, (array)$data_products);
-						if(empty($in_product_id)){
-							$in_product_id = array(-1);
-						}
-						modules::run('users/users_permision_product/delete', array('in_product_id' => $in_product_id, 'type' => 'DEFAULT'));
+                        $in_product_id = array_diff((array)$data_products_current, (array)$data_products);
+                        if (empty($in_product_id)) {
+                            $in_product_id = array(-1);
+                        }
+                        modules::run('users/users_permision_product/delete', array('in_product_id' => $in_product_id, 'type' => 'DEFAULT'));
 
-						if(is_array($data_products) && !empty($data_products)){
-							foreach($data_products as $key=>$value){
-								if($value != 0){
-									$arr_validate_exist = array(
-										'user_id' => $userid,
-										'product_id' => $value,
+                        if (is_array($data_products) && !empty($data_products)) {
+                            foreach ($data_products as $key => $value) {
+                                if ($value != 0) {
+                                    $arr_validate_exist = array(
+                                        'user_id' => $userid,
+                                        'product_id' => $value,
                                         'type' => 'DEFAULT',
-									);
-									if(modules::run('users/users_permision_product/get', $arr_validate_exist)){
-										modules::run('users/users_permision_product/update', $arr_validate_exist, array(
-											'modified' => time()
-										));
-									}else{
-										$arr_validate_exist['created'] = time();
-										$arr_validate_exist['modified'] = 0;
-										modules::run('users/users_permision_product/add', $arr_validate_exist);
-									}
-									unset($arr_validate_exist);
-								}
-							}
-						}
+                                    );
+                                    if (modules::run('users/users_permision_product/get', $arr_validate_exist)) {
+                                        modules::run('users/users_permision_product/update', $arr_validate_exist, array(
+                                            'modified' => time()
+                                        ));
+                                    } else {
+                                        $arr_validate_exist['created'] = time();
+                                        $arr_validate_exist['modified'] = 0;
+                                        modules::run('users/users_permision_product/add', $arr_validate_exist);
+                                    }
+                                    unset($arr_validate_exist);
+                                }
+                            }
+                        }
 
                         $notify_type = 'success';
                         $notify_content = 'Thông tin tài khoản đã cập nhật!';
@@ -911,9 +940,9 @@ class Users extends Layout {
                         'password' => $this->__encrip_password($this->input->post('password')),
                         'email' => $this->input->post('email'),
                         'full_name' => $this->input->post('full_name'),
-						'phone' => $this->input->post('phone'),
+                        'phone' => $this->input->post('phone'),
                         'level' => $this->input->post('level'),
-						'address' => $this->input->post('address'),
+                        'address' => $this->input->post('address'),
                         'gender' => $this->input->post('gender'),
                         'active' => 1,
                         'created' => time(),
@@ -928,27 +957,27 @@ class Users extends Layout {
                         );
                         modules::run('users/groups_users/add', $data_groups_users);
 
-						if(is_array($data_products) && !empty($data_products)){
-							foreach($data_products as $key=>$value){
-								if($value != 0){
-									$arr_validate_exist = array(
-										'user_id' => $userid,
-										'product_id' => $value,
+                        if (is_array($data_products) && !empty($data_products)) {
+                            foreach ($data_products as $key => $value) {
+                                if ($value != 0) {
+                                    $arr_validate_exist = array(
+                                        'user_id' => $userid,
+                                        'product_id' => $value,
                                         'type' => 'DEFAULT',
-									);
-									if(modules::run('users/users_permision_product/get', $arr_validate_exist)){
-										modules::run('users/users_permision_product/update', $arr_validate_exist, array(
-											'modified' => time()
-										));
-									}else{
-										$arr_validate_exist['created'] = time();
-										$arr_validate_exist['modified'] = 0;
-										modules::run('users/users_permision_product/add', $arr_validate_exist);
-									}
-									unset($arr_validate_exist);
-								}
-							}
-						}
+                                    );
+                                    if (modules::run('users/users_permision_product/get', $arr_validate_exist)) {
+                                        modules::run('users/users_permision_product/update', $arr_validate_exist, array(
+                                            'modified' => time()
+                                        ));
+                                    } else {
+                                        $arr_validate_exist['created'] = time();
+                                        $arr_validate_exist['modified'] = 0;
+                                        modules::run('users/users_permision_product/add', $arr_validate_exist);
+                                    }
+                                    unset($arr_validate_exist);
+                                }
+                            }
+                        }
 
                         $notify_type = 'success';
                         $notify_content = 'Thành viên mới đã thêm!';
@@ -975,9 +1004,9 @@ class Users extends Layout {
             $group_id = $this->groups_users->get_group_id($userid);
             $data_userid['group_id'] = $group_id['group_id'];
 
-			//products
+            //products
             $data_users_permision_product = modules::run('users/users_permision_product/gets', array('user_id' => $userid, 'type' => 'DEFAULT'));
-			// $data_userid['products'] = (is_array($data_users_permision_product) && !empty($data_users_permision_product)) ? array_column($data_users_permision_product, 'product_id', 'id') : NULL;
+            // $data_userid['products'] = (is_array($data_users_permision_product) && !empty($data_users_permision_product)) ? array_column($data_users_permision_product, 'product_id', 'id') : NULL;
             $products_in_id = (is_array($data_users_permision_product) && !empty($data_users_permision_product)) ? array_column($data_users_permision_product, 'product_id') : array(0);
             $args = modules::run('shops/rows/default_args');
             $args['in_id'] = $products_in_id;
@@ -999,14 +1028,15 @@ class Users extends Layout {
             $this->_data['breadcrumbs_module_func'] = 'Thêm tài khoản mới';
             $this->_data['title'] = 'Thêm tài khoản mới - ' . $this->_data['title'];
         }
-		$this->_data['groups'] = modules::run('users/groups/gets');
-		// $this->_data['products'] = modules::run('shops/rows/gets');
+        $this->_data['groups'] = modules::run('users/groups/gets');
+        // $this->_data['products'] = modules::run('shops/rows/gets');
 
         $this->_data['main_content'] = 'users/admin/view_page_content';
         $this->load->view('layout/admin/view_layout', $this->_data);
     }
 
-    function admin_shop_content() {
+    function admin_shop_content()
+    {
         $this->_initialize_admin();
         $this->redirect_admin();
 
@@ -1015,7 +1045,7 @@ class Users extends Layout {
         $user_id = ($this->uri->segment($segment) == '') ? 0 : (int) $this->uri->segment($segment);
         $row = $this->get($user_id);
         // var_dump($row); die();
-        if(!isset($row['shop_status']) || $row['shop_status'] == -1){
+        if (!isset($row['shop_status']) || $row['shop_status'] == -1) {
             redirect(get_admin_url($this->_module_slug));
         }
         $this->_data['row'] = $row;
@@ -1098,7 +1128,8 @@ class Users extends Layout {
         $this->load->view('layout/admin/view_layout', $this->_data);
     }
 
-    function site_register_shop() {
+    function site_register_shop()
+    {
         $this->_initialize();
         modules::run('users/require_logged_in');
 
@@ -1106,18 +1137,18 @@ class Users extends Layout {
         // $this->_module_slug = 'quan-ly-san-pham';
         $user_id = $this->_data['userid'];
         $shop_status = get_user_shop_status($user_id);
-        if($shop_status == NULL){
+        if ($shop_status == NULL) {
             redirect(site_url());
-        }        
-        if($shop_status == 0){
+        }
+        if ($shop_status == 0) {
             $notify_type = 'warning';
             $notify_content = 'Bạn đã đăng ký bán hàng! Vui lòng phê duyệt của chúng tôi!';
             $this->set_notify($notify_type, $notify_content);
-        }elseif($shop_status == -2){
+        } elseif ($shop_status == -2) {
             $notify_type = 'danger';
             $notify_content = 'Cửa hàng của bạn đang bị khóa! Vui lòng liên hệ với chúng tôi!';
             $this->set_notify($notify_type, $notify_content);
-        }elseif($shop_status == 1){
+        } elseif ($shop_status == 1) {
             redirect(site_url('quan-ly-san-pham'));
         }
         $this->_data['shop_status'] = $shop_status;
@@ -1223,8 +1254,9 @@ class Users extends Layout {
         $this->load->view('layout/site/layout', $this->_data);
     }
 
-    function site_register() {
-		$this->_initialize();
+    function site_register()
+    {
+        $this->_initialize();
         $this->deny_logged_in();
 
         $this->_plugins_script[] = array(
@@ -1247,25 +1279,25 @@ class Users extends Layout {
         if (!empty($post)) {
             $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
             $this->form_validation->set_rules('full_name', 'Họ tên', 'trim|required|max_length[255]');
-			$this->form_validation->set_rules('username', 'Tên đăng nhập', 'trim|required|callback_check_username_availablity|min_length[6]|max_length[20]');
-			$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|callback_check_email_availablity');
-			$this->form_validation->set_rules('password', 'Mật khẩu', 'trim|required|min_length[6]');
-			$this->form_validation->set_rules('password_confirm', 'Lặp lại mật khẩu', 'trim|required|min_length[6]|matches[password]');
+            $this->form_validation->set_rules('username', 'Tên đăng nhập', 'trim|required|callback_check_username_availablity|min_length[6]|max_length[20]');
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|callback_check_email_availablity');
+            $this->form_validation->set_rules('password', 'Mật khẩu', 'trim|required|min_length[6]');
+            $this->form_validation->set_rules('password_confirm', 'Lặp lại mật khẩu', 'trim|required|min_length[6]|matches[password]');
 
             if ($this->form_validation->run($this)) {
                 $referred_by = 0;
                 $ref = $this->input->post('ref');
-                if(trim($ref) != ''){
+                if (trim($ref) != '') {
                     $user_refer = $this->M_users->get_by(array('refer_key' => $ref, 'active' => 1));
-                    if(isset($user_refer['userid'])){
+                    if (isset($user_refer['userid'])) {
                         $referred_by = (int) $user_refer['userid'];
                     }
                 }
                 $refer_key = $this->__get_refer_key();
-				$activation_key = $this->__encrip_password(random_string('unique'));
-				$email = $this->input->post('email');
+                $activation_key = $this->__encrip_password(random_string('unique'));
+                $email = $this->input->post('email');
 
-				$username = $this->input->post('username');
+                $username = $this->input->post('username');
                 $data = array(
                     'referred_by' => $referred_by,
                     'referred_status' => 0,
@@ -1279,7 +1311,7 @@ class Users extends Layout {
                     'address' => $this->input->post('address'),
                     'birthday' => time(),
                     'activation_key' => $activation_key,
-                    'active' => 0,
+                    'active' => 1,
                     'created' => time(),
                     'modified' => 0,
                 );
@@ -1293,25 +1325,25 @@ class Users extends Layout {
                     );
                     $this->M_groups_users->add($data_groups_users);
 
-					$partial = array();
-					$partial['data'] = $data;
-					$data_sendmail = array(
-						'sender_email' => get_first_element($this->_data['email']),
-						'sender_name' => $this->_data['site_name'] . ' - ' . get_first_element($this->_data['email']),
-						'receiver_email' => $email, //mail nhan thư
-						'subject' => 'Xác nhận đăng ký thành viên',
-						'message' => $this->load->view('layout/site/partial/html-template-verify-email-address', $partial, true)
-					);
-					modules::run('emails/send_mail', $data_sendmail);
+                    $partial = array();
+                    $partial['data'] = $data;
+                    $data_sendmail = array(
+                        'sender_email' => get_first_element($this->_data['email']),
+                        'sender_name' => $this->_data['site_name'] . ' - ' . get_first_element($this->_data['email']),
+                        'receiver_email' => $email, //mail nhan thư
+                        'subject' => 'Xác nhận đăng ký thành viên',
+                        'message' => $this->load->view('layout/site/partial/html-template-verify-email-address', $partial, true)
+                    );
+                    modules::run('emails/send_mail', $data_sendmail);
 
-					$data_sendmail = array(
-						'sender_email' => $email,
-						'sender_name' => $this->_data['site_name'] . ' - Đăng ký thành viên - ' . $email,
-						'receiver_email' => $this->_data['email'], //mail nhan thư
-						'subject' => 'Đăng ký thành viên mới',
-						'message' => $this->load->view('layout/site/partial/html-template-notify-new-member', $partial, true)
-					);
-					modules::run('emails/send_mail', $data_sendmail);
+                    $data_sendmail = array(
+                        'sender_email' => $email,
+                        'sender_name' => $this->_data['site_name'] . ' - Đăng ký thành viên - ' . $email,
+                        'receiver_email' => $this->_data['email'], //mail nhan thư
+                        'subject' => 'Đăng ký thành viên mới',
+                        'message' => $this->load->view('layout/site/partial/html-template-notify-new-member', $partial, true)
+                    );
+                    modules::run('emails/send_mail', $data_sendmail);
 
                     $notify_type = 'success';
                     $notify_content = 'Đăng ký thành công! Vui lòng kiểm tra email, để kích hoạt thành viên và đăng nhập!';
@@ -1338,15 +1370,16 @@ class Users extends Layout {
         $this->load->view('layout/site/layout', $this->_data);
     }
 
-	function site_profile() {
-		$this->_initialize();
+    function site_profile()
+    {
+        $this->_initialize();
         $this->require_logged_in();
 
-		$user_id = $this->_data['userid'];
+        $user_id = $this->_data['userid'];
         $row = $this->get($user_id);
-		if(!is_array($row) || empty($row)){
-			show_404();
-		}
+        if (!is_array($row) || empty($row)) {
+            show_404();
+        }
         $this->_data['row'] = $row;
 
         $this->_plugins_script[] = array(
@@ -1381,7 +1414,7 @@ class Users extends Layout {
                     'account_number' => $this->input->post('account_number'),
                     'banker_id' => $this->input->post('banker_id'),
                     'bank_branch' => $this->input->post('bank_branch'),
-					'modified' => time(),
+                    'modified' => time(),
                 );
 
                 if ($this->M_users->update($user_id, $data)) {
@@ -1397,7 +1430,7 @@ class Users extends Layout {
                     $notify_content = 'Thông tin cá nhân chưa được đổi! Vui lòng thực hiện lại!';
                     $this->set_notify($notify_type, $notify_content);
                 }
-				redirect(current_url());
+                redirect(current_url());
             }
         }
         $banker = modules::run('banker/gets');
@@ -1414,38 +1447,39 @@ class Users extends Layout {
         $this->load->view('layout/site/layout', $this->_data);
     }
 
-    function site_verify_email_address() {
-		$this->_initialize();
+    function site_verify_email_address()
+    {
+        $this->_initialize();
         $this->deny_logged_in();
 
         if (!$this->input->get('u') || !$this->input->get('code')) {
             show_404();
         }
-		$get = $this->input->get();
+        $get = $this->input->get();
 
         $code = $this->input->get('code');
         $username = $this->input->get('u');
         $user = $this->M_users->get_by_activation_key($username, $code);
         if (empty($user)) {
             $notify_type = 'danger';
-			$notify_content = 'Thành viên không tồn tại vui lòng đăng ký!';
-			$this->set_notify($notify_type, $notify_content);
-        }else{
-			$data = array(
-				'activation_key' => '',
-				'active' => 1,
-			);
-			if ($this->M_users->update($user['userid'], $data)) {
-				$notify_type = 'success';
-				$notify_content = 'Xác nhận đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ!';
-				$this->set_notify($notify_type, $notify_content);
-				redirect(site_url('dang-nhap'));
-			}else{
-				$notify_type = 'warning';
-				$notify_content = 'Thành viên không tồn tại! Vui lòng kiểm tra lại!';
-				$this->set_notify($notify_type, $notify_content);
-			}
-		}
+            $notify_content = 'Thành viên không tồn tại vui lòng đăng ký!';
+            $this->set_notify($notify_type, $notify_content);
+        } else {
+            $data = array(
+                'activation_key' => '',
+                'active' => 1,
+            );
+            if ($this->M_users->update($user['userid'], $data)) {
+                $notify_type = 'success';
+                $notify_content = 'Xác nhận đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ!';
+                $this->set_notify($notify_type, $notify_content);
+                redirect(site_url('dang-nhap'));
+            } else {
+                $notify_type = 'warning';
+                $notify_content = 'Thành viên không tồn tại! Vui lòng kiểm tra lại!';
+                $this->set_notify($notify_type, $notify_content);
+            }
+        }
         $this->_breadcrumbs[] = array(
             'url' => site_url('xac-nhan-thanh-vien') . '?' . http_build_query($get, '', "&"),
             'name' => 'Xác nhận đăng ký thành viên'
@@ -1457,14 +1491,15 @@ class Users extends Layout {
         $this->load->view('layout/site/layout', $this->_data);
     }
 
-	function site_change_password() {
-		$this->_initialize();
+    function site_change_password()
+    {
+        $this->_initialize();
         $this->require_logged_in();
 
-		$row = $this->M_users->get_by_username($this->_data['username']);
-		if(!is_array($row) || empty($row)){
-			show_404();
-		}
+        $row = $this->M_users->get_by_username($this->_data['username']);
+        if (!is_array($row) || empty($row)) {
+            show_404();
+        }
         $this->_data['row'] = $row;
 
         $this->_plugins_script[] = array(
@@ -1533,8 +1568,9 @@ class Users extends Layout {
         $this->load->view('layout/site/layout', $this->_data);
     }
 
-	function site_forget_password() {
-		$this->_initialize();
+    function site_forget_password()
+    {
+        $this->_initialize();
 
         $this->deny_logged_in();
 
@@ -1553,8 +1589,8 @@ class Users extends Layout {
             'name' => 'forget-password-validate'
         );
         $this->set_modules();
-        
-		$post = $this->input->post();
+
+        $post = $this->input->post();
 
         if (!empty($post)) {
             $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
@@ -1581,12 +1617,12 @@ class Users extends Layout {
                             'message' => $this->load->view('layout/site/partial/html-template-forget-password', $partial, true)
                         );
                         modules::run('emails/send_mail', $data_sendmail);
-						
-						$notify_type = 'success';
+
+                        $notify_type = 'success';
                         $notify_content = 'Bạn hãy xem mail để lấy lại mật khẩu!';
                         $this->set_notify($notify_type, $notify_content);
                     } else {
-						$notify_type = 'danger';
+                        $notify_type = 'danger';
                         $notify_content = 'Có lỗi xảy ra vui lòng thực hiện lại!';
                         $this->set_notify($notify_type, $notify_content);
                     }
@@ -1609,8 +1645,9 @@ class Users extends Layout {
         $this->load->view('layout/site/layout', $this->_data);
     }
 
-	function site_login_facebook_ajax() {
-		if (!$this->input->is_ajax_request()) {
+    function site_login_facebook_ajax()
+    {
+        if (!$this->input->is_ajax_request()) {
             exit('No direct script access allowed');
         }
         $message = array();
@@ -1618,10 +1655,10 @@ class Users extends Layout {
         $message['content'] = null;
         $message['message'] = 'Kiểm tra thông tin';
 
-		$access_token = $this->input->post('access_token');
-		$url = "https://graph.facebook.com/me?fields=id,name,email,picture,link,gender,birthday,locale,last_name,first_name,cover&access_token=$access_token";
-		$postData = array();
-		$ch = curl_init();
+        $access_token = $this->input->post('access_token');
+        $url = "https://graph.facebook.com/me?fields=id,name,email,picture,link,gender,birthday,locale,last_name,first_name,cover&access_token=$access_token";
+        $postData = array();
+        $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -1633,22 +1670,22 @@ class Users extends Layout {
 
         curl_close($ch);
 
-		$nested_object = json_decode($response);
-		$userProfile = json_decode(json_encode($nested_object), true);
-		//var_dump($userProfile);
+        $nested_object = json_decode($response);
+        $userProfile = json_decode(json_encode($nested_object), true);
+        //var_dump($userProfile);
 
-		if (is_array($userProfile) && !empty($userProfile)) {
+        if (is_array($userProfile) && !empty($userProfile)) {
             // Preparing data for database insertion
-			$birthday_time = 0;
-			if(isset($userProfile['birthday'])){
-				$birthday = explode('/', $userProfile['birthday']);
-				if(isset($birthday[0]) && isset($birthday[1]) && isset($birthday[2])){
-					$birthday_time = strtotime($birthday[2] . "-" . $birthday[0] . "-" . $birthday[1]);
-				}
-			}
-			$full_name = $userProfile['last_name'] . ' ' . $userProfile['first_name'];
-			$full_name_slug = str_replace('-', '', strtolower(alias($full_name)));
-			$data = array();
+            $birthday_time = 0;
+            if (isset($userProfile['birthday'])) {
+                $birthday = explode('/', $userProfile['birthday']);
+                if (isset($birthday[0]) && isset($birthday[1]) && isset($birthday[2])) {
+                    $birthday_time = strtotime($birthday[2] . "-" . $birthday[0] . "-" . $birthday[1]);
+                }
+            }
+            $full_name = $userProfile['last_name'] . ' ' . $userProfile['first_name'];
+            $full_name_slug = str_replace('-', '', strtolower(alias($full_name)));
+            $data = array();
             $data['oauth_provider'] = 'facebook';
             $data['oauth_uid'] = $userProfile['id'];
             $data['email'] = (isset($userProfile['email']) && ($userProfile['email'] != NULL || $userProfile['email'] != '')) ? $userProfile['email'] : $full_name_slug . '@gmail.com';
@@ -1660,16 +1697,16 @@ class Users extends Layout {
             $isset_user = $this->M_users->checkUser($data);
             if (is_array($isset_user) && !empty($isset_user)) {
                 $this->M_users->update($isset_user['userid'], array(
-					'full_name' => $full_name,
-					'locale' => $data['locale'],
-					'profile_url' => $data['profile_url'],
-					'picture_url' => $data['picture_url'],
-					'email' => $data['email'],
-					'birthday' => $birthday_time,
-					'gender' => $data['gender'],
-					'modified' => time()
-				));
-				$row = $this->M_users->checkUser($data);
+                    'full_name' => $full_name,
+                    'locale' => $data['locale'],
+                    'profile_url' => $data['profile_url'],
+                    'picture_url' => $data['picture_url'],
+                    'email' => $data['email'],
+                    'birthday' => $birthday_time,
+                    'gender' => $data['gender'],
+                    'modified' => time()
+                ));
+                $row = $this->M_users->checkUser($data);
                 $sess_array = array(
                     'userid' => $row['userid'],
                     'username' => $row['username'],
@@ -1682,16 +1719,16 @@ class Users extends Layout {
                 $this->set_last_ip($row['userid']);
                 $this->set_last_agent($row['userid']);
             } else {
-				$referred_by = 0;
-				$ref = $this->input->post('ref');
-				if($ref != NULL && trim($ref) != ''){
-					$user_refer = $this->get_by(array('refer_key' => $ref));
-					if(isset($user_refer['userid'])){
-						$referred_by = (int)$user_refer['userid'];
-					}
-				}
-				$this->load->helper('string');
-				$refer_key = $this->__encrip_password(random_string('unique'));
+                $referred_by = 0;
+                $ref = $this->input->post('ref');
+                if ($ref != NULL && trim($ref) != '') {
+                    $user_refer = $this->get_by(array('refer_key' => $ref));
+                    if (isset($user_refer['userid'])) {
+                        $referred_by = (int)$user_refer['userid'];
+                    }
+                }
+                $this->load->helper('string');
+                $refer_key = $this->__encrip_password(random_string('unique'));
                 $data['referred_by'] = $referred_by;
                 $data['referred_status'] = 0;
                 $data['refer_key'] = $refer_key;
@@ -1728,16 +1765,17 @@ class Users extends Layout {
                 $this->set_last_agent($row['userid']);
             }
 
-			$message['status'] = 'success';
-			$message['content'] = array('userProfile' => $userProfile, 'access_token' => $access_token, 'redirect' => site_url());
-			$message['message'] = 'Đăng nhập thành công!';
-		}
-		echo json_encode($message);
+            $message['status'] = 'success';
+            $message['content'] = array('userProfile' => $userProfile, 'access_token' => $access_token, 'redirect' => site_url());
+            $message['message'] = 'Đăng nhập thành công!';
+        }
+        echo json_encode($message);
         exit();
     }
 
-	function site_forget_password_ajax() {
-		if (!$this->input->is_ajax_request()) {
+    function site_forget_password_ajax()
+    {
+        if (!$this->input->is_ajax_request()) {
             exit('No direct script access allowed');
         }
 
@@ -1753,7 +1791,7 @@ class Users extends Layout {
             $this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[5]|max_length[255]');
 
             if ($this->form_validation->run($this)) {
-				$email = $this->input->post('email');
+                $email = $this->input->post('email');
                 $user = $this->M_users->get_by_email($email);
 
                 if (!empty($user)) {
@@ -1774,27 +1812,28 @@ class Users extends Layout {
                         );
                         modules::run('emails/send_mail', $data_sendmail);
 
-						$message['status'] = 'success';
-						$message['content'] = null;
-						$message['message'] = 'Bạn hãy xem mail để lấy lại mật khẩu!';
+                        $message['status'] = 'success';
+                        $message['content'] = null;
+                        $message['message'] = 'Bạn hãy xem mail để lấy lại mật khẩu!';
                     } else {
-						$message['status'] = 'danger';
-						$message['content'] = null;
-						$message['message'] = 'Có lỗi xảy ra vui lòng thực hiện lại!';
+                        $message['status'] = 'danger';
+                        $message['content'] = null;
+                        $message['message'] = 'Có lỗi xảy ra vui lòng thực hiện lại!';
                     }
                 } else {
-					$message['status'] = 'danger';
-					$message['content'] = null;
-					$message['message'] = 'Email không tồn tại!';
+                    $message['status'] = 'danger';
+                    $message['content'] = null;
+                    $message['message'] = 'Email không tồn tại!';
                 }
-			}
+            }
         }
-		echo json_encode($message);
+        echo json_encode($message);
         exit();
     }
 
-	function site_reset_password() {
-		$this->_initialize();
+    function site_reset_password()
+    {
+        $this->_initialize();
 
         if (!$this->input->get('u') || !$this->input->get('code')) {
             show_404();
@@ -1858,8 +1897,9 @@ class Users extends Layout {
         $this->load->view('layout/site/layout', $this->_data);
     }
 
-	function site_change_password_ajax() {
-		if (!$this->input->is_ajax_request()) {
+    function site_change_password_ajax()
+    {
+        if (!$this->input->is_ajax_request()) {
             exit('No direct script access allowed');
         }
 
@@ -1867,7 +1907,7 @@ class Users extends Layout {
         $message['status'] = 'warning';
         $message['content'] = null;
         $message['message'] = 'Có lỗi xảy ra! Vui lòng thực hiện lại!';
-		
+
         $post = $this->input->post();
 
         if (!empty($post)) {
@@ -1878,42 +1918,43 @@ class Users extends Layout {
 
 
             if ($this->form_validation->run($this)) {
-				if(!$this->is_current_password()){
-					$message['status'] = 'danger';
-					$message['content'] = null;
-					$message['message'] = 'Mật khẩu hiện tại không đúng!';
-				}else{
-					$password_confirm = $this->input->post('password_confirm');
-					$password = $this->input->post('password');
-					if ($password_confirm != $password) {					
-						$message['status'] = 'danger';
-						$message['content'] = null;
-						$message['message'] = 'Mật khẩu xác nhận không đúng!';
-					}else{
-						$password = $this->__encrip_password($password);
-						$userid = $this->_data['userid'];
-						$data = array(
-							'password' => $password
-						);
-						if ($this->M_users->update($userid, $data)) {
-							$message['status'] = 'success';
-							$message['content'] = null;
-							$message['message'] = 'Mật khẩu đã đổi thành công!';
-						} else {
-							$message['status'] = 'danger';
-							$message['content'] = null;
-							$message['message'] = 'Mật khẩu chưa được đổi! Vui lòng thực hiện lại!';
-						}
-					}
-				}
-			}
+                if (!$this->is_current_password()) {
+                    $message['status'] = 'danger';
+                    $message['content'] = null;
+                    $message['message'] = 'Mật khẩu hiện tại không đúng!';
+                } else {
+                    $password_confirm = $this->input->post('password_confirm');
+                    $password = $this->input->post('password');
+                    if ($password_confirm != $password) {
+                        $message['status'] = 'danger';
+                        $message['content'] = null;
+                        $message['message'] = 'Mật khẩu xác nhận không đúng!';
+                    } else {
+                        $password = $this->__encrip_password($password);
+                        $userid = $this->_data['userid'];
+                        $data = array(
+                            'password' => $password
+                        );
+                        if ($this->M_users->update($userid, $data)) {
+                            $message['status'] = 'success';
+                            $message['content'] = null;
+                            $message['message'] = 'Mật khẩu đã đổi thành công!';
+                        } else {
+                            $message['status'] = 'danger';
+                            $message['content'] = null;
+                            $message['message'] = 'Mật khẩu chưa được đổi! Vui lòng thực hiện lại!';
+                        }
+                    }
+                }
+            }
         }
-		echo json_encode($message);
+        echo json_encode($message);
         exit();
     }
 
-	function site_register_ajax() {
-		if (!$this->input->is_ajax_request()) {
+    function site_register_ajax()
+    {
+        if (!$this->input->is_ajax_request()) {
             exit('No direct script access allowed');
         }
 
@@ -1925,61 +1966,68 @@ class Users extends Layout {
         $post = $this->input->post();
 
         if (!empty($post)) {
-            $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
-            $this->form_validation->set_rules('full_name', 'Họ tên', 'trim|required|min_length[5]|max_length[255]');
-            $this->form_validation->set_rules('username', 'Tên đăng nhập', 'trim|required|min_length[5]|max_length[255]');
-            $this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[5]|max_length[255]');
-            $this->form_validation->set_rules('password', 'Mật khẩu', 'trim|required|min_length[6]|max_length[255]');
-
+            // ...existing code...
             if ($this->form_validation->run($this)) {
-				if(!$this->check_username_availablity()){
-					$message['status'] = 'danger';
-					$message['content'] = null;
-					$message['message'] = 'Tên đăng nhập này đã tồn tại. Vui lòng chọn tên khác!';
-				}elseif(!$this->check_email_availablity()){
-					$message['status'] = 'danger';
-					$message['content'] = null;
-					$message['message'] = 'Email này đã có người sử dụng. Vui lòng nhập email khác!';
-				}else{
-					$username = $this->input->post('username');
-					$data = array(
-						'username' => $username,
-						'password' => $this->__encrip_password($this->input->post('password')),
-						'email' => $this->input->post('email'),
-						'full_name' => $this->input->post('full_name'),
-						'phone' => '',
-						'address' => '',
-						'gender' => 'M',
-						'birthday' => 0,
-						'active' => 1
-					);
+                // Sửa tại đây: thêm khai báo biến referred_by
+                $referred_by = 0; // hoặc lấy từ ref nếu có
+                $refer_key = $this->__get_refer_key();
+                $email = $this->input->post('email');
+                $username = $this->input->post('username');
+                $data = array(
+                    'referred_by' => $referred_by,
+                    'referred_status' => 0,
+                    'refer_key' => $refer_key,
+                    'role' => 'MEMBER',
+                    'username' => $username,
+                    'password' => $this->__encrip_password($this->input->post('password')),
+                    'email' => $email,
+                    'full_name' => $this->input->post('full_name'),
+                    'phone' => $this->input->post('phone'),
+                    'address' => $this->input->post('address'),
+                    'birthday' => time(),
+                    'activation_key' => '', // Không cần activation key
+                    'active' => 1, // Kích hoạt luôn
+                    'created' => time(),
+                    'modified' => 0,
+                );
+                $userid = $this->M_users->add($data);
 
-					$userid = $this->M_users->add($data);
+                if ($userid != 0) {
+                    $data_groups_users = array(
+                        'group_id' => 3,
+                        'userid' => $userid
+                    );
+                    $this->M_groups_users->add($data_groups_users);
 
-					if ($userid != 0) {
-						$data_groups_users = array(
-							'group_id' => 3,
-							'userid' => $userid
-						);
-						$this->M_groups_users->add($data_groups_users);
+                    // Đăng nhập luôn cho user
+                    $sess_array = array(
+                        'userid' => $userid,
+                        'username' => $username,
+                        'full_name' => $this->input->post('full_name'),
+                        'photo' => '',
+                        'group_id' => 3
+                    );
+                    $this->session->set_userdata('logged_in', $sess_array);
 
-						$message['status'] = 'success';
-						$message['content'] = null;
-						$message['message'] = 'Đăng ký thành công! Mời bạn đăng nhập!';
-					} else {
-						$message['status'] = 'danger';
-						$message['content'] = null;
-						$message['message'] = 'Tài khoản chưa được tạo! Vui lòng đăng ký lại!';
-					}
-				}
+                    $notify_type = 'success';
+                    $notify_content = 'Đăng ký thành công! Bạn đã được kích hoạt và có thể đăng nhập ngay!';
+                    $this->set_notify($notify_type, $notify_content);
+                    redirect(site_url('trang-ca-nhan'));
+                } else {
+                    $notify_type = 'danger';
+                    $notify_content = 'Tài khoản chưa được tạo! Vui lòng đăng ký lại!';
+                    $this->set_notify($notify_type, $notify_content);
+                    redirect(current_full_url());
+                }
             }
         }
-		echo json_encode($message);
+        echo json_encode($message);
         exit();
     }
 
-	function site_login_ajax() {
-		if (!$this->input->is_ajax_request()) {
+    function site_login_ajax()
+    {
+        if (!$this->input->is_ajax_request()) {
             exit('No direct script access allowed');
         }
 
@@ -2015,22 +2063,23 @@ class Users extends Layout {
                     $this->set_last_ip($row['userid']);
                     $this->set_last_agent($row['userid']);
 
-					$message['status'] = 'success';
-					$message['content'] = array('data' => $row, 'url' => site_url('dang-viec-lam'));
-					$message['message'] = 'Đã nhập thành công!';
+                    $message['status'] = 'success';
+                    $message['content'] = array('data' => $row, 'url' => site_url('dang-viec-lam'));
+                    $message['message'] = 'Đã nhập thành công!';
                 } else {
                     $message['status'] = 'danger';
-					$message['content'] = null;
-					$message['message'] = 'Tên đăng nhập hoặc mật khẩu sai!';
+                    $message['content'] = null;
+                    $message['message'] = 'Tên đăng nhập hoặc mật khẩu sai!';
                 }
             }
         }
-		echo json_encode($message);
+        echo json_encode($message);
         exit();
     }
 
-    function site_login() {
-		$this->_initialize();
+    function site_login()
+    {
+        $this->_initialize();
         $this->deny_logged_in();
 
         $this->_plugins_script[] = array(
@@ -2076,12 +2125,12 @@ class Users extends Layout {
                     $this->set_last_login($row['userid']);
                     $this->set_last_ip($row['userid']);
                     $this->set_last_agent($row['userid']);
-					if($this->input->get('redirect_page')){
-						$redirect_page = base64_decode($this->input->get('redirect_page'));
-					}else{
-						$redirect_page = base_url();
-					}
-					redirect($redirect_page);
+                    if ($this->input->get('redirect_page')) {
+                        $redirect_page = base64_decode($this->input->get('redirect_page'));
+                    } else {
+                        $redirect_page = base_url();
+                    }
+                    redirect($redirect_page);
                 } else {
                     $notify_type = 'danger';
                     $notify_content = 'Tên đăng nhập hoặc mật khẩu không đúng!';
@@ -2101,7 +2150,8 @@ class Users extends Layout {
         $this->load->view('layout/site/layout', $this->_data);
     }
 
-    function login_by() {
+    function login_by()
+    {
         $this->_initialize_admin();
         $this->redirect_admin();
         $redirect_page = get_admin_url();
@@ -2142,7 +2192,8 @@ class Users extends Layout {
         }
     }
 
-    function login_by_special() {
+    function login_by_special()
+    {
         $this->_initialize_admin();
         $redirect_page = get_admin_url();
         if ($this->input->get('redirect_page')) {
@@ -2182,7 +2233,8 @@ class Users extends Layout {
         }
     }
 
-    function admin_index() {
+    function admin_index()
+    {
         $this->_initialize_admin();
         if ($this->validate_admin_logged_in()) {
             $this->load->module('dashboard');
@@ -2207,16 +2259,16 @@ class Users extends Layout {
                     } else {
                         $this->login_attempt($max_time_in_seconds);
                         $login_attempt_count = $this->login_attempt_count();
-                        if($login_attempt_count < $max_attempts) {
+                        if ($login_attempt_count < $max_attempts) {
                             $this->_data['messing'] = 'Tên đăng nhập hoặc mật khẩu chưa đúng!';
                             $this->load->view('admin/view_page_admin_login', $this->_data);
-                        }else{
+                        } else {
                             redirect(get_admin_url());
                         }
                     }
                 }
-            }else{
-                if($login_attempt_count < $max_attempts) {
+            } else {
+                if ($login_attempt_count < $max_attempts) {
                     $this->load->view('admin/view_page_admin_login', $this->_data);
                 } else {
                     $this->_data['ip'] = $ip;
@@ -2228,7 +2280,8 @@ class Users extends Layout {
         }
     }
 
-    function validate_current_password() {
+    function validate_current_password()
+    {
         $username = $this->_data['username'];
         $current_password = $this->__encrip_password($this->input->post('current_password'));
 
@@ -2245,7 +2298,8 @@ class Users extends Layout {
         }
     }
 
-	function is_current_password() {
+    function is_current_password()
+    {
         $username = $this->_data['username'];
         $current_password = $this->__encrip_password($this->input->post('current_password'));
 
@@ -2258,7 +2312,8 @@ class Users extends Layout {
         }
     }
 
-    function validate_login() {
+    function validate_login()
+    {
         $username = $this->input->post('username');
         $password = $this->__encrip_password($this->input->post('password'));
         $is_admin = TRUE;
@@ -2266,14 +2321,14 @@ class Users extends Layout {
         $row = $this->M_users->validate_login($username, $password, $is_admin);
 
         if ($row) {
-			$role = 'USER';
-			if($row['group_id'] == '4'){
-				$role = 'MANAGER';
-			}elseif($row['group_id'] == '5'){
-				$role = 'LEADER';
-			}elseif($row['group_id'] == '6'){
-				$role = 'ADMIN';
-			}
+            $role = 'USER';
+            if ($row['group_id'] == '4') {
+                $role = 'MANAGER';
+            } elseif ($row['group_id'] == '5') {
+                $role = 'LEADER';
+            } elseif ($row['group_id'] == '6') {
+                $role = 'ADMIN';
+            }
             $sess_array = array(
                 'userid' => $row['userid'],
                 'username' => $row['username'],
@@ -2291,7 +2346,8 @@ class Users extends Layout {
         }
     }
 
-    function validate_admin_logged_in() {
+    function validate_admin_logged_in()
+    {
         if (!$this->session->userdata('logged_in')) {
             return FALSE;
         } else {
@@ -2304,7 +2360,8 @@ class Users extends Layout {
         }
     }
 
-    function validate_user_logged_in() {
+    function validate_user_logged_in()
+    {
         if (!$this->session->userdata('logged_in')) {
             return FALSE;
         } else {
@@ -2312,13 +2369,15 @@ class Users extends Layout {
         }
     }
 
-    function deny_logged_in() {
+    function deny_logged_in()
+    {
         if ($this->session->userdata('logged_in')) {
             redirect(base_url());
         }
     }
 
-    function require_logged_in() {
+    function require_logged_in()
+    {
         if (!$this->session->userdata('logged_in')) {
             if ($this->input->post('ajax') == '1') {
                 $this->_status = "danger";
@@ -2336,7 +2395,8 @@ class Users extends Layout {
         }
     }
 
-    function require_admin_logged_in() {
+    function require_admin_logged_in()
+    {
         if (!$this->validate_admin_logged_in()) {
             if ($this->input->post('ajax') == '1') {
                 $this->_status = "danger";
@@ -2351,7 +2411,8 @@ class Users extends Layout {
         }
     }
 
-    function logout() {
+    function logout()
+    {
         if ($this->session->has_userdata('logged_in_by')) {
             $this->session->unset_userdata('logged_in_by');
             redirect(get_admin_url());
@@ -2361,15 +2422,16 @@ class Users extends Layout {
         redirect(base_url());
     }
 
-    function site_changepass() {
-		$this->_initialize();
+    function site_changepass()
+    {
+        $this->_initialize();
         $this->require_logged_in();
 
         $user_id = $this->_data['userid'];
         $row = $this->get($user_id);
-		if(!is_array($row) || empty($row)){
-			show_404();
-		}
+        if (!is_array($row) || empty($row)) {
+            show_404();
+        }
         $this->_data['user'] = $row;
 
         $this->_plugins_script[] = array(
@@ -2438,7 +2500,8 @@ class Users extends Layout {
         $this->load->view('layout/site/layout', $this->_data);
     }
 
-    function site_main() {
+    function site_main()
+    {
         $this->require_logged_in();
 
         $row = $this->M_users->get_by_username($this->_data['username']);
@@ -2455,8 +2518,9 @@ class Users extends Layout {
         $this->load->view('layout/site/layout', $this->_data);
     }
 
-    function site_editinfo() {
-		$this->_initialize();
+    function site_editinfo()
+    {
+        $this->_initialize();
 
         $this->require_logged_in();
         $this->_plugins_script[] = array(
@@ -2522,7 +2586,8 @@ class Users extends Layout {
         $this->load->view('layout/site/layout', $this->_data);
     }
 
-    function active() {
+    function active()
+    {
         $post = $this->input->post();
         if (!empty($post)) {
             $active = $this->input->post('active');
@@ -2545,7 +2610,8 @@ class Users extends Layout {
         }
     }
 
-    function check_current_username_availablity() {//dùng để kiểm tra username khi admin cập nhật thông tin cho user
+    function check_current_username_availablity()
+    { //dùng để kiểm tra username khi admin cập nhật thông tin cho user
         $post = $this->input->post();
         $this->_message_success = 'true';
         $this->_message_danger = 'false';
@@ -2565,8 +2631,7 @@ class Users extends Layout {
                 $this->set_json_encode();
                 $this->load->view('layout/json_data', $this->_data);
             } else {
-                $username = $this->input->
-                        post('username');
+                $username = $this->input->post('username');
                 $userid = $this->input->post('userid');
                 if ($this->M_users->check_current_username_availablity($username, $userid)) {
                     return TRUE;
@@ -2579,7 +2644,8 @@ class Users extends Layout {
         }
     }
 
-    function check_current_email_availablity() {//dùng để kiểm tra email khi admin cập nhật thông tin cho user
+    function check_current_email_availablity()
+    { //dùng để kiểm tra email khi admin cập nhật thông tin cho user
         $post = $this->input->post();
         $this->_message_success = 'true';
         $this->_message_danger = 'false';
@@ -2612,7 +2678,8 @@ class Users extends Layout {
         }
     }
 
-    function check_current_identity_number_card_availablity() {
+    function check_current_identity_number_card_availablity()
+    {
         $post = $this->input->post();
         $this->_message_success = 'true';
         $this->_message_danger = 'false';
@@ -2646,7 +2713,8 @@ class Users extends Layout {
         }
     }
 
-    function check_current_password_availablity() {
+    function check_current_password_availablity()
+    {
         $post = $this->input->post();
         $this->_message_success = 'Mật khẩu hiện tại đúng!';
         $this->_message_danger = 'Mật khẩu hiện tại không đúng!';
@@ -2661,11 +2729,13 @@ class Users extends Layout {
                 } else {
                     $this->_status = "danger";
                     $this->_message = $this->_message_danger;
-                } $this->set_json_encode();
+                }
+                $this->set_json_encode();
                 $this->load->view('layout/json_data', $this->_data);
             } else {
                 $current_password = $this->__encrip_password($this->input->post(
-                                'current_password'));
+                    'current_password'
+                ));
                 $username = $this->_data['username'];
                 if ($this->M_users->check_current_password_availablity($username, $current_password)) {
                     return TRUE;
@@ -2678,7 +2748,8 @@ class Users extends Layout {
         }
     }
 
-    function check_username_availablity() {
+    function check_username_availablity()
+    {
         $post = $this->input->post();
         $this->_message_success = 'Bạn có thể sử dụng tên đăng nhập này!';
         $this->_message_danger = 'Tên đăng nhập này đã có người sử dụng!';
@@ -2695,8 +2766,7 @@ class Users extends Layout {
                 }
 
                 $this->set_json_encode();
-                $this->load->view('layout/json_data', $this->
-                        _data);
+                $this->load->view('layout/json_data', $this->_data);
             } else {
                 $username = $this->input->post('username');
                 if ($this->M_users->check_username_availablity($username)) {
@@ -2710,7 +2780,8 @@ class Users extends Layout {
         }
     }
 
-    function check_email_availablity() {
+    function check_email_availablity()
+    {
         $post = $this->input->post();
         $this->_message_success = 'Bạn có thể sử dụng email này!';
         $this->_message_danger = 'Email này đã có người sử dụng!';
@@ -2731,7 +2802,9 @@ class Users extends Layout {
 
                 $this->set_json_encode();
                 $this->load->view(
-                        'layout/json_data', $this->_data);
+                    'layout/json_data',
+                    $this->_data
+                );
             } else {
                 $email = $this->input->post('email');
                 if ($this->M_users->check_email_availablity($email)) {
@@ -2745,7 +2818,8 @@ class Users extends Layout {
         }
     }
 
-    function check_refer_key_availablity($refer_key = '') {
+    function check_refer_key_availablity($refer_key = '')
+    {
         $post = $this->input->post();
         $this->_message_success = 'Bạn có thể sử dụng tên đăng nhập này!';
         $this->_message_danger = 'Tên đăng nhập này đã có người sử dụng!';
@@ -2774,7 +2848,8 @@ class Users extends Layout {
         }
     }
 
-    function check_phone_availablity() {
+    function check_phone_availablity()
+    {
         $post = $this->input->post();
         $this->_message_success = 'Bạn có thể sử dụng số điện thoại này!';
         $this->_message_danger = 'Số điện thoại này đã có người sử dụng!';
@@ -2804,7 +2879,8 @@ class Users extends Layout {
         }
     }
 
-    function check_identity_number_card_availablity() {
+    function check_identity_number_card_availablity()
+    {
         $post = $this->input->post();
         $this->_message_success = 'Bạn có thể sử dụng số chứng minh nhân dân này!';
         $this->_message_danger = 'Số chứng minh nhân dân này đã có người sử dụng!';
@@ -2834,7 +2910,8 @@ class Users extends Layout {
         }
     }
 
-    function update_active($active = 1) {
+    function update_active($active = 1)
+    {
         $userid = $this->input->post('userid');
         $data = array(
             'active' => $active
@@ -2842,14 +2919,16 @@ class Users extends Layout {
         return $this->M_users->update($userid, $data);
     }
 
-	function update($userid = 0, $data = array()) {
-        if($userid == 0 || !is_array($data) || empty($data)){
-			return false;
-		}
+    function update($userid = 0, $data = array())
+    {
+        if ($userid == 0 || !is_array($data) || empty($data)) {
+            return false;
+        }
         return $this->M_users->update($userid, $data);
     }
 
-    function admin_delete() {
+    function admin_delete()
+    {
         $this->_initialize_admin();
         $this->_message_success = 'Đã xóa tài khoản và dữ liệu liên quan!';
         $this->_message_warning = 'Tài khoản này không tồn tại!';
@@ -2861,7 +2940,7 @@ class Users extends Layout {
                     $group_id = modules::run('users/groups_users/get_group_id', $id);
                     if ($group_id['group_id'] != 6) {
                         if ($this->M_users->delete($id)) {
-							modules::run('users/users_permision_product/delete', array('user_id' => $id));
+                            modules::run('users/users_permision_product/delete', array('user_id' => $id));
                             $this->groups_users->delete($id);
                             if ($current_photo['photo'] != 'no-avatar.jpg') {
                                 @unlink(FCPATH . $this->_users_path . $current_photo['photo']);
@@ -2891,7 +2970,7 @@ class Users extends Layout {
                     $group_id = $this->groups_users->get_group_id($id);
                     if ($group_id['group_id'] != 6) {
                         if ($this->M_users->delete($id)) {
-							modules::run('users/users_permision_product/delete', array('user_id' => $id));
+                            modules::run('users/users_permision_product/delete', array('user_id' => $id));
 
                             $this->groups_users->delete($id);
                             if ($current_photo['photo'] != 'no-avatar.jpg') {
@@ -2929,7 +3008,6 @@ class Users extends Layout {
             }
         }
     }
-
 }
 /* End of file Users.php */
 /* Location: ./application/modules/users/controllers/Users.php */

@@ -3,24 +3,28 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 include_once APPPATH . '/modules/layout/controllers/Layout.php';
-class Emails extends Layout {
+class Emails extends Layout
+{
 
-	private $_module_slug = 'emails';
+    private $_module_slug = 'emails';
 
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
         $this->load->library('encrypt');
         $this->_data['breadcrumbs_module_name'] = 'Email';
-		$this->_data['module_slug'] = $this->_module_slug;
-		$this->load->model('emails/m_emails', 'M_emails');
+        $this->_data['module_slug'] = $this->_module_slug;
+        $this->load->model('emails/m_emails', 'M_emails');
     }
 
-    function send_mail($data_sendmail = null, $configs_emails = null) {
+    function send_mail($data_sendmail = null, $configs_emails = null)
+    {
+        $this->load->model('emails/m_email_configs', 'M_email_configs'); // Thêm dòng này
         if ($data_sendmail == NULL) {
             return FALSE;
         } else {
             $this->load->library('encrypt');
-            if(!$configs_emails){
+            if (!$configs_emails) {
                 $configs_emails = modules::run('emails/emails_config/get_configs_emails');
             }
 
@@ -54,13 +58,17 @@ class Emails extends Layout {
                 $this->email->clear(TRUE);
                 return TRUE;
             } else {
+                log_message('error', $this->email->print_debugger());
+                // Hiển thị lỗi ra màn hình để debug
+                echo $this->email->print_debugger();
                 $this->email->clear(TRUE);
                 return FALSE;
             }
         }
     }
 
-	function default_args() {
+    function default_args()
+    {
         $order_by = array(
             'modified' => 'DESC',
             'created' => 'DESC'
@@ -71,50 +79,56 @@ class Emails extends Layout {
         return $args;
     }
 
-    function counts($options = array()) {
+    function counts($options = array())
+    {
         $default_args = $this->default_args();
 
-        if(is_array($options) && !empty($options)){
+        if (is_array($options) && !empty($options)) {
             $args = array_merge($default_args, $options);
-        }else{
+        } else {
             $args = $default_args;
         }
         return $this->M_emails->counts($args);
     }
 
-    function gets($options = array()) {
-		$default_args = $this->default_args();
+    function gets($options = array())
+    {
+        $default_args = $this->default_args();
 
-		if(is_array($options) && !empty($options)){
-			$args = array_merge($default_args, $options);
-		}else{
-			$args = $default_args;
-		}
+        if (is_array($options) && !empty($options)) {
+            $args = array_merge($default_args, $options);
+        } else {
+            $args = $default_args;
+        }
 
         return $this->M_emails->gets($args);
     }
 
-    function get($id) {
+    function get($id)
+    {
         return $this->M_emails->get($id);
     }
 
-	function add($data) {
-		if(!is_array($data) && empty($data)){
-			return 0;
-		}
+    function add($data)
+    {
+        if (!is_array($data) && empty($data)) {
+            return 0;
+        }
 
         return $this->M_emails->add($data);
     }
 
-	function update($id, $data) {
-		if(!is_array($data) && empty($data)){
-			return FALSE;
-		}
+    function update($id, $data)
+    {
+        if (!is_array($data) && empty($data)) {
+            return FALSE;
+        }
 
         return $this->M_emails->update($id, $data);
     }
 
-    function admin_repository() {
+    function admin_repository()
+    {
         $this->_initialize_admin();
         $this->redirect_admin();
         $this->_module_slug = 'emails/repository';
@@ -202,9 +216,10 @@ class Emails extends Layout {
         $this->load->view('layout/admin/view_layout', $this->_data);
     }
 
-    function get_configs_emails(){
-    	define('MAX_SENDED', 100);
-    	//define('MAX_SENDED', 3);
+    function get_configs_emails()
+    {
+        define('MAX_SENDED', 100);
+        //define('MAX_SENDED', 3);
         $configs_emails = null;
         $email_configs = modules::run('emails/emails_configs/gets', array('active' => 1));
         // echo "<pre>";
@@ -221,40 +236,41 @@ class Emails extends Layout {
         // var_dump(date('Y-m-d H:i:s', $start_date_start));
         // var_dump(date('Y-m-d H:i:s', $start_date_end));
         // die;
-		if (is_array($email_configs) && !empty($email_configs)) {
-			foreach ($email_configs as $email_config) {
-				$args_email_logs = array(
-					'start_date_start' => $start_date_start,
-            		'start_date_end' => $start_date_end,
-            		'mailed_by' => $email_config['smtp_user'],
-            		'not_in_status' => array(0)
-            	);
-				$email_logs_count = modules::run('emails/emails_logs/counts', $args_email_logs);
-				if($email_logs_count < MAX_SENDED){
-					$configs_emails = $email_config;
-					// echo "<pre>";
-			  //       print_r($configs_emails);
-			  //       echo "</pre>";
-					break;
-				}
-				// echo "<pre>";
-		  //       print_r($email_logs_count);
-		  //       echo "</pre>";
-			}
-		}
-		// echo "<pre>";
-  //       print_r($configs_emails);
-  //       echo "</pre>";
-		// die;
-		return $configs_emails;
+        if (is_array($email_configs) && !empty($email_configs)) {
+            foreach ($email_configs as $email_config) {
+                $args_email_logs = array(
+                    'start_date_start' => $start_date_start,
+                    'start_date_end' => $start_date_end,
+                    'mailed_by' => $email_config['smtp_user'],
+                    'not_in_status' => array(0)
+                );
+                $email_logs_count = modules::run('emails/emails_logs/counts', $args_email_logs);
+                if ($email_logs_count < MAX_SENDED) {
+                    $configs_emails = $email_config;
+                    // echo "<pre>";
+                    //       print_r($configs_emails);
+                    //       echo "</pre>";
+                    break;
+                }
+                // echo "<pre>";
+                //       print_r($email_logs_count);
+                //       echo "</pre>";
+            }
+        }
+        // echo "<pre>";
+        //       print_r($configs_emails);
+        //       echo "</pre>";
+        // die;
+        return $configs_emails;
     }
 
-	function admin_content_sendmail() {
+    function admin_content_sendmail()
+    {
         $this->_initialize_admin();
         $this->redirect_admin();
 
-		$this->_module_slug = 'emails/sendmail';
-		$this->_data['module_slug'] = $this->_module_slug;
+        $this->_module_slug = 'emails/sendmail';
+        $this->_data['module_slug'] = $this->_module_slug;
 
         $this->_plugins_script_admin[] = array(
             'folder' => 'jquery-validation',
@@ -293,7 +309,7 @@ class Emails extends Layout {
 
             if ($this->form_validation->run($this)) {
                 $err = FALSE;
-				/* $content = $this->input->post('bodyhtml');
+                /* $content = $this->input->post('bodyhtml');
 				$replacements = array(
 					'({full_name})' => 'KH ABC',//ten kh
 					'({address})' => 'An Giang',//dia chi
@@ -303,12 +319,12 @@ class Emails extends Layout {
 				print_r($message);
 				echo "</pre>";
 				die(); */
-				$id = (int) $this->input->post('id');
-				$full_name = $this->input->post('full_name');
-				$email = $this->input->post('email');
-				$subject = $this->input->post('subject');
-				$content = $this->input->post('bodyhtml');
-				$status = $this->input->post('status');
+                $id = (int) $this->input->post('id');
+                $full_name = $this->input->post('full_name');
+                $email = $this->input->post('email');
+                $subject = $this->input->post('subject');
+                $content = $this->input->post('bodyhtml');
+                $status = $this->input->post('status');
                 $options_emails = $this->input->post('options_emails');
                 //$mailings = $this->input->post('mailings');
                 $arr_options_emails = NULL;
@@ -322,12 +338,12 @@ class Emails extends Layout {
                         $receiver_emails = array_column($customers, 'email');
                     }
                 }
-                if(trim($options_emails) != ''){
+                if (trim($options_emails) != '') {
                     $arr_options_emails = explode(',', $options_emails);
                     $arr_options_emails = array_map('trim', $arr_options_emails);
                 }
                 $is_options_emails = false;
-                if(is_array($arr_options_emails) && !empty($arr_options_emails)){
+                if (is_array($arr_options_emails) && !empty($arr_options_emails)) {
                     $receiver_emails = array_merge($receiver_emails, $arr_options_emails);
                     $is_options_emails = true;
                 }
@@ -339,90 +355,90 @@ class Emails extends Layout {
                 // echo "</pre>";
                 // die();
 
-				if($status == 1){
-					if (is_array($mailings) && !empty($mailings)) {
-						$data_email = array(
-							'subject' => $subject,
-							'full_name' => $full_name,
-							'email' => $email,
-							'bodyhtml' => $content,
+                if ($status == 1) {
+                    if (is_array($mailings) && !empty($mailings)) {
+                        $data_email = array(
+                            'subject' => $subject,
+                            'full_name' => $full_name,
+                            'email' => $email,
+                            'bodyhtml' => $content,
                             'mailings_group' => serialize($mailings_group),
-							'mailings' => serialize($mailings),
+                            'mailings' => serialize($mailings),
                             'options_emails' => $options_emails,
                             'receiver_emails' => serialize($receiver_emails),
-							'status' => 1
-						);
-						$email_id = 0;
-						if($id != 0){
-							$data_email['modified'] = time();
-							if($this->update($id, $data_email)){
-								$email_id = $id;
-							}
-						}else{
-							$data_email['sended'] = time();
-							$data_email['created'] = time();
-							$data_email['modified'] = 0;
-							$email_id = $this->add($data_email);
-						}
+                            'status' => 1
+                        );
+                        $email_id = 0;
+                        if ($id != 0) {
+                            $data_email['modified'] = time();
+                            if ($this->update($id, $data_email)) {
+                                $email_id = $id;
+                            }
+                        } else {
+                            $data_email['sended'] = time();
+                            $data_email['created'] = time();
+                            $data_email['modified'] = 0;
+                            $email_id = $this->add($data_email);
+                        }
 
-						if($email_id != 0){
-							foreach ($mailings as $value) {
-								$configs_emails = $this->get_configs_emails();
-								$row = modules::run('emails/emails_customers/get', $value);
+                        if ($email_id != 0) {
+                            foreach ($mailings as $value) {
+                                $configs_emails = $this->get_configs_emails();
+                                $row = modules::run('emails/emails_customers/get', $value);
 
-								//replace content code tags
-								$replacements = array(
-									'({full_name})' => isset($row['full_name']) ? $row['full_name'] : '',//ten kh
-									'({address})' => isset($row['address']) ? $row['address'] : '',//dia chi
-								);
+                                //replace content code tags
+                                $replacements = array(
+                                    '({full_name})' => isset($row['full_name']) ? $row['full_name'] : '', //ten kh
+                                    '({address})' => isset($row['address']) ? $row['address'] : '', //dia chi
+                                );
                                 $message = preg_replace(array_keys($replacements), array_values($replacements), $content);
-								//$message = htmlspecialchars_decode($message);
+                                //$message = htmlspecialchars_decode($message);
                                 //$message = $this->load->view('layout/site/partial/html-template-email', array('title'=> $subject, 'body' => $message), true);
 
                                 $data_sendmail = array(
-									'sender_email' => $email,
+                                    'sender_email' => $email,
                                     //'sender_name' => $full_name . ' - ' . $email,
-									'sender_name' => $full_name,
-									'receiver_email' => $row['email'], //mail nhan thư
-									'subject' => $subject,
-									'message' => $message
-								);
+                                    'sender_name' => $full_name,
+                                    'receiver_email' => $row['email'], //mail nhan thư
+                                    'subject' => $subject,
+                                    'message' => $message
+                                );
 
                                 $data = array(
-									'email_id' => $email_id,
-									'mailed_by' => $configs_emails['smtp_user'],
-									'to' => $row['email'],
-									'email' => $email,
-									'subject' => $subject,
-									'content' => $message,
-									'data' => serialize($data_sendmail),
-									'status' => 0,
-									'created' => time(),
-									'viewed' => 0,
-									'sended' => 0
-								);
-								$email_logs_id = modules::run('emails/emails_logs/add', $data);
+                                    'email_id' => $email_id,
+                                    'mailed_by' => $configs_emails['smtp_user'],
+                                    'to' => $row['email'],
+                                    'email' => $email,
+                                    'subject' => $subject,
+                                    'content' => $message,
+                                    'data' => serialize($data_sendmail),
+                                    'status' => 0,
+                                    'created' => time(),
+                                    'viewed' => 0,
+                                    'sended' => 0
+                                );
+                                $email_logs_id = modules::run('emails/emails_logs/add', $data);
 
-								//update message attack track
-								$message .= "<img border='0' src='" . base_url('email/track') . "?id=" . $email_logs_id . "&email=" . $data['to'] . "' width='1' height='1' alt=''/>";
-								$data_sendmail['message'] = $message;
-								$email_logs_data = array(
-									'content' => $message,
-									'data' => serialize($data_sendmail)
-								);
+                                //update message attack track
+                                $message .= "<img border='0' src='" . base_url('email/track') . "?id=" . $email_logs_id . "&email=" . $data['to'] . "' width='1' height='1' alt=''/>";
+                                $data_sendmail['message'] = $message;
+                                $email_logs_data = array(
+                                    'content' => $message,
+                                    'data' => serialize($data_sendmail)
+                                );
 
-								$is_sendmail = $this->send_mail($data_sendmail, $configs_emails);
+                                $is_sendmail = $this->send_mail($data_sendmail, $configs_emails);
                                 //$is_sendmail = $this->send_mail($data_sendmail);
-								if($is_sendmail == 1){
-									$email_logs_data['status'] = 1;
-									$email_logs_data['sended'] = time();
-								}
-								modules::run('emails/emails_logs/update', $email_logs_id, $email_logs_data);
-								$usleep = rand(200, 1500) * 1000;
-								usleep($usleep);
-							}
-							//die();
-                            if($is_options_emails){
+                                if ($is_sendmail == 1) {
+                                    $email_logs_data['status'] = 1;
+                                    $email_logs_data['sended'] = time();
+                                }
+                                modules::run('emails/emails_logs/update', $email_logs_id, $email_logs_data);
+                                $usleep = rand(200, 1500) * 1000;
+                                usleep($usleep);
+                            }
+                            //die();
+                            if ($is_options_emails) {
                                 foreach ($arr_options_emails as $receiver_email) {
                                     $configs_emails = $this->get_configs_emails();
                                     $replacements = array(
@@ -463,7 +479,7 @@ class Emails extends Layout {
 
                                     $is_sendmail = $this->send_mail($data_sendmail, $configs_emails);
                                     //$is_sendmail = $this->send_mail($data_sendmail);
-                                    if($is_sendmail == 1){
+                                    if ($is_sendmail == 1) {
                                         $email_logs_data['status'] = 1;
                                         $email_logs_data['sended'] = time();
                                     }
@@ -473,58 +489,58 @@ class Emails extends Layout {
                                 }
                             }
 
-							if ($err === FALSE) {
-								$notify_type = 'success';
-								$notify_content = 'Email đã được gửi!';
-							} else {
-								$notify_type = 'danger';
-								$notify_content = 'Có lỗi xảy ra!';
-							}
-							$this->set_notify_admin($notify_type, $notify_content);
-							redirect(get_admin_url($this->_module_slug));
-						}else {
-							$notify_type = 'danger';
-							$notify_content = 'Có lỗi xảy ra. Chưa gửi mail!';
-							$this->set_notify_admin($notify_type, $notify_content);
-							redirect(get_admin_url($this->_module_slug));
-						}
-					} else {
-						$notify_type = 'danger';
-						$notify_content = 'Chưa chọn danh sách khách hàng nhận mail!';
-						$this->set_notify_admin($notify_type, $notify_content);
-						redirect(get_admin_url($this->_module_slug));
-					}
-				}else{
-					$data_email = array(
-						'subject' => $subject,
-						'full_name' => $full_name,
-						'email' => $email,
-						'bodyhtml' => $content,
+                            if ($err === FALSE) {
+                                $notify_type = 'success';
+                                $notify_content = 'Email đã được gửi!';
+                            } else {
+                                $notify_type = 'danger';
+                                $notify_content = 'Có lỗi xảy ra!';
+                            }
+                            $this->set_notify_admin($notify_type, $notify_content);
+                            redirect(get_admin_url($this->_module_slug));
+                        } else {
+                            $notify_type = 'danger';
+                            $notify_content = 'Có lỗi xảy ra. Chưa gửi mail!';
+                            $this->set_notify_admin($notify_type, $notify_content);
+                            redirect(get_admin_url($this->_module_slug));
+                        }
+                    } else {
+                        $notify_type = 'danger';
+                        $notify_content = 'Chưa chọn danh sách khách hàng nhận mail!';
+                        $this->set_notify_admin($notify_type, $notify_content);
+                        redirect(get_admin_url($this->_module_slug));
+                    }
+                } else {
+                    $data_email = array(
+                        'subject' => $subject,
+                        'full_name' => $full_name,
+                        'email' => $email,
+                        'bodyhtml' => $content,
                         'mailings_group' => serialize($mailings_group),
-						'mailings' => serialize($mailings),
+                        'mailings' => serialize($mailings),
                         'options_emails' => $options_emails,
                         'receiver_emails' => serialize($receiver_emails),
-						'status' => 0,
-						'sended' => 0
-					);
-					if($id != 0){
-						$data_email['modified'] = time();
-						$email_id = intval($this->update($id, $data_email));
-					}else{
-						$data_email['created'] = time();
-						$data_email['modified'] = 0;
-						$email_id = $this->add($data_email);
-					}
-					if($email_id != 0){
-						$notify_type = 'success';
-						$notify_content = 'Email đã được lưu!';
-					}else{
-						$notify_type = 'danger';
-						$notify_content = 'Email chưa được lưu!';
-					}
-					$this->set_notify_admin($notify_type, $notify_content);
-					redirect(get_admin_url($this->_module_slug));
-				}
+                        'status' => 0,
+                        'sended' => 0
+                    );
+                    if ($id != 0) {
+                        $data_email['modified'] = time();
+                        $email_id = intval($this->update($id, $data_email));
+                    } else {
+                        $data_email['created'] = time();
+                        $data_email['modified'] = 0;
+                        $email_id = $this->add($data_email);
+                    }
+                    if ($email_id != 0) {
+                        $notify_type = 'success';
+                        $notify_content = 'Email đã được lưu!';
+                    } else {
+                        $notify_type = 'danger';
+                        $notify_content = 'Email chưa được lưu!';
+                    }
+                    $this->set_notify_admin($notify_type, $notify_content);
+                    redirect(get_admin_url($this->_module_slug));
+                }
             }
         }
 
@@ -532,7 +548,7 @@ class Emails extends Layout {
         $this->_data['breadcrumbs_module_func'] = 'Gửi mail';
         $this->load->library('ckeditor', array('instanceName' => 'CKEDITOR1', 'basePath' => base_url() . "ckeditor/", 'outPut' => true));
 
-		$segment = 4;
+        $segment = 4;
         $id = ($this->uri->segment($segment) == '') ? 0 : $this->uri->segment($segment);
         if ($id != 0) {
             $row = $this->get($id);
@@ -548,7 +564,8 @@ class Emails extends Layout {
         $this->load->view('layout/admin/view_layout', $this->_data);
     }
 
-	function ajax_get_code_tag() {
+    function ajax_get_code_tag()
+    {
         if (!$this->input->is_ajax_request()) {
             exit('No direct script access allowed');
         }
@@ -560,8 +577,8 @@ class Emails extends Layout {
 
         $post = $this->input->post();
         if (!empty($post)) {
-			$key = $this->input->post('key');
-			$content = display_value_array($this->config->item('email_variables_name'), $key);
+            $key = $this->input->post('key');
+            $content = display_value_array($this->config->item('email_variables_name'), $key);
 
             $message['status'] = 'success';
             $message['content'] = $content;
@@ -570,7 +587,6 @@ class Emails extends Layout {
         echo json_encode($message);
         exit();
     }
-
 }
 
 /* End of file Emails.php */
