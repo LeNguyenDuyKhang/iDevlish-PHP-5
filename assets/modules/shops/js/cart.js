@@ -166,7 +166,7 @@ $(document).on('click', '.btn-buy-now', function(event) {
             alert(response.message);
             if (response.status === 'success') {
                 $('.mini-cart').html(response.content);
-                window.location.href = base_url + 'thanh-toan.html';
+                window.location.href = base_url + 'thanh-toan';
             }
         },
         error: function(e) {

@@ -207,3 +207,4 @@ var product_init = JSON.parse('<?php echo json_encode($data_colors, JSON_FORCE_O
         </div>
     </section>
 </article>
+

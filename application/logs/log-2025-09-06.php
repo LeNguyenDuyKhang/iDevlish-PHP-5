@@ -2432,3 +2432,283 @@ ham kh=E1=BA=A3o =C4=91i=E1=BB=81u kho=E1=BA=A3n c=E1=BB=A7a ch=C3=BAng t=
 =3C/table=3E
 
 --B_ALT_68bbd445ab0fb--</pre>
+ERROR - 2025-09-06 14:01:34 --> Severity: Warning --> failed loading cafile stream: `C:\xampp\apache\bin\curl-ca-bundle.crt' C:\TTDN_Xtech789\sample_BACK_END\Backend_PHP_5_BanHang\Xtech789_kholanh\system\libraries\Email.php 2069
+ERROR - 2025-09-06 14:01:34 --> Severity: Warning --> fsockopen(): Failed to enable crypto C:\TTDN_Xtech789\sample_BACK_END\Backend_PHP_5_BanHang\Xtech789_kholanh\system\libraries\Email.php 2069
+ERROR - 2025-09-06 14:01:34 --> Severity: Warning --> fsockopen(): unable to connect to ssl://smtp.googlemail.com:465 (Unknown error) C:\TTDN_Xtech789\sample_BACK_END\Backend_PHP_5_BanHang\Xtech789_kholanh\system\libraries\Email.php 2069
+ERROR - 2025-09-06 14:01:34 --> The following SMTP error was encountered: 0 <br />Unable to send email using PHP SMTP.  Your server might not be configured to send mail using this method.<br /><pre>Date: Sat, 6 Sep 2025 14:01:33 +0700
+From: =?UTF-8?Q?Kho=20L=E1=BA=A1nh=20Ch=E1=BA=A5t=20L?==?UTF-8?Q?=C6=B0?= =?UTF-8?Q?=E1=BB=A3ng=20Cao=20-=20H=C6=B0ng=20T=C3=AD?==?UTF-8?Q?n?= &lt;contact.ledu.com.vn@gmail.com&gt;
+Return-Path: &lt;contact.ledu.com.vn@gmail.com&gt;
+To: khanglnd0175@gmail.com, hungtin.co.ltd@gmail.com, lenhan10th@gmail.com
+Reply-To: =?UTF-8?Q?Kho=20L=E1=BA=A1nh=20Ch=E1=BA=A5t=20L?==?UTF-8?Q?=C6=B0?= =?UTF-8?Q?=E1=BB=A3ng=20Cao=20-=20H=C6=B0ng=20T=C3=AD?==?UTF-8?Q?n?= &lt;hungtin.co.ltd@gmail.com&gt;
+Subject: =?UTF-8?Q?Th=C3=B4ng=20tin=20mua=20h=C3=A0ng?==?UTF-8?Q?=20-=20Kh?= =?UTF-8?Q?o=20L=E1=BA=A1nh=20Ch=E1=BA=A5t=20L=C6=B0?==?UTF-8?Q?=E1=BB=A3?= =?UTF-8?Q?ng=20Cao=20-=20H=C6=B0ng=20T=C3=ADn?=
+User-Agent: CodeIgniter
+X-Sender: contact.ledu.com.vn@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;68bbdc4d76d3e@gmail.com&gt;
+Mime-Version: 1.0
+
+
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_68bbdc4d76d50&quot;
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_68bbdc4d76d50
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Chào Lê Nguyễn Duy Khang,
+
+ Cảm ơn bạn đã đặt hàng của chúng tôi. Dưới đây là chi
+tiết đặt hàng của bạn:
+
+ Ngày đặt: 06/09/2025 lúc 02:01 PM
+ Mã đơn hàng: CBS000000000015
+ Hình thức thanh toán:
+ Người nhận hàng: Lê Nguyễn Duy Khang
+ Địa chỉ giao hàng: tang 1, Phường Quang Trung, Quận Hồng
+Bàng, Thành phố Hải Phòng
+ Điện thoại: 0367181002
+
+
+
+
+
+ STT
+ Tên sản phẩm
+ Giá sản phẩm (vnđ)
+ Giảm giá (vnđ)
+ Số lượng
+ Thành tiền (vnđ)
+
+
+
+
+
+ 1
+ Khóa Học Microsoft Office Nâng Cao
+
+ 0
+
+ 0
+ 4
+ 0
+
+
+
+
+
+ Tạm tính
+ 0
+
+
+
+
+
+ Phí vận chuyển
+ 30.000
+
+
+
+
+
+ Tổng cộng
+ 30.000
+
+
+
+
+
+
+
+ Để biết thêm thông tin, xin vui lòng tham khảo điều khoản
+của chúng tôi.
+
+ Trân trọng
+ Localhost
+
+
+--B_ALT_68bbdc4d76d50
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+=3Ctable border=3D=220=22 cellpadding=3D=220=22 cellspacing=3D=220=22 heigh=
+t=3D=22100=25=22 width=3D=22100=25=22=3E
+ =3Ctbody=3E
+ =3Ctr=3E
+ =3Ctd align=3D=22center=22 valign=3D=22top=22=3E
+ =3Ctable border=3D=220=22 cellpadding=3D=220=22 cellspacing=3D=220=22 widt=
+h=3D=22890=22=3E
+ =3Ctbody=3E
+ =3Ctr=3E
+ =3Ctd valign=3D=22top=22 style=3D=22border:1px solid =23c7c7c7=3Bborder-to=
+p:none=22=3E
+ =3Ctable border=3D=220=22 cellpadding=3D=220=22 cellspacing=3D=220=22 widt=
+h=3D=22890=22=3E
+ =3Ctbody=3E
+ =3Ctr=3E
+ =3Ctd valign=3D=22top=22 width=3D=22100=25=22=3E
+ =3Ctable border=3D=220=22 cellpadding=3D=220=22 cellspacing=3D=220=22 widt=
+h=3D=22100=25=22=3E
+ =3Ctbody=3E
+ =3Ctr=3E
+ =3Ctd valign=3D=22top=22=3E
+ =3Ctable border=3D=220=22 cellpadding=3D=2215=22 cellspacing=3D=220=22 wid=
+th=3D=22100=25=22=3E
+ =3Ctbody=3E
+ =3Ctr=3E
+ =3Ctd valign=3D=22top=22=3E
+ =3Ctable border=3D=220=22 cellpadding=3D=220=22 cellspacing=3D=220=22 widt=
+h=3D=22100=25=22=3E
+ =3Ctbody=3E
+ =3Ctr=3E
+ =3Ctd valign=3D=22top=22 style=3D=22line-height:150=25=3Bcolor:=235e5e5e=
+=3Bfont-size:14px=3Bfont-family:Arial=3Btext-align:left=22=3E
+ =3Cdiv=3E
+ Ch=C3=A0o L=C3=AA Nguy=E1=BB=85n Duy Khang,
+ =3Cbr=3E
+ =3Cdiv=3EC=E1=BA=A3m =C6=A1n b=E1=BA=A1n =C4=91=C3=A3 =C4=91=E1=BA=B7t h=
+=C3=A0ng c=E1=BB=A7a ch=C3=BAng t=C3=B4i. D=C6=B0=E1=BB=9Bi =C4=91=C3=A2y l=
+=C3=A0 chi ti=E1=BA=BFt =C4=91=E1=BA=B7t h=C3=A0ng c=E1=BB=A7a b=E1=BA=A1n:=
+=3C/div=3E
+ =3Cbr=3E
+ Ng=C3=A0y =C4=91=C4=83=CC=A3t: 06/09/2025 l=C3=BAc 02:01 PM=3Cbr=3E
+ M=C3=A3 =C4=91=C6=A1n h=C3=A0ng: =3Cstrong style=3D=22color: =23f00=3B=22=
+=3ECBS000000000015=3C/strong=3E=3Cbr=3E
+ H=C3=ACnh th=E1=BB=A9c thanh to=C3=A1n: =3Cstrong=3E=3C/strong=3E=3Cbr=3E
+ Ng=C6=B0=C6=A1=CC=80i nh=C3=A2=CC=A3n h=C3=A0ng: =3Cstrong=3EL=C3=AA Nguy=
+=E1=BB=85n Duy Khang=3C/strong=3E=3Cbr=3E
+ =C4=90=E1=BB=8Ba ch=E1=BB=89 giao h=C3=A0ng: =3Cstrong=3Etang 1, Ph=C6=B0=
+=E1=BB=9Dng Quang Trung, Qu=E1=BA=ADn H=E1=BB=93ng B=C3=A0ng, Th=C3=A0nh ph=
+=E1=BB=91 H=E1=BA=A3i Ph=C3=B2ng=3C/strong=3E=3Cbr=3E
+ =C4=90i=C3=AA=CC=A3n thoa=CC=A3i: =3Cstrong=3E0367181002=3C/strong=3E
+ =3Cbr=3E
+ =3Cbr=3E
+ =3Ctable cellspacing=3D=220=22 cellpadding=3D=220=22 width=3D=22100=25=22=
+=3E
+ =3Ctbody=3E
+ =3Ctr=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-right:40px=22 align=3D=22right=22=3ESTT=3C/td=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-right:40px=22 align=3D=22left=22=3ET=C3=AAn s=E1=BA=A3n ph=E1=BA=A9=
+m=3C/td=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-left:10px=3Bpadding-right:10px=22 align=3D=22right=22=3EGi=C3=A1 s=
+=E1=BA=A3n ph=E1=BA=A9m (vn=C4=91)=3C/td=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-left:10px=3Bpadding-right:10px=22 align=3D=22right=22=3EGi=E1=BA=A3=
+m gi=C3=A1 (vn=C4=91)=3C/td=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-left:10px=3Bpadding-right:10px=22 align=3D=22right=22=3ES=E1=BB=91 =
+l=C6=B0=E1=BB=A3ng=3C/td=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-left:10px=3Bpadding-right:10px=22 align=3D=22right=22=3ETh=C3=A0nh =
+ti=E1=BB=81n (vn=C4=91)=3C/td=3E
+ =3C/tr=3E
+ =3Ctr=3E
+ =3Ctd colspan=3D=226=22 bgcolor=3D=22=23888888=22 height=3D=221=22=3E=3C/t=
+d=3E
+ =3C/tr=3E
+ =3Ctr=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-right:40px=22 align=3D=22right=22=3E1=3C/td=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-right:40px=22 align=3D=22left=22=3EKh=C3=B3a H=E1=BB=8Dc Microsoft =
+Office N=C3=A2ng Cao=3C/td=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-left:10px=3Bpadding-right:10px=22 align=3D=22right=22=3E
+ =3Cstrong=3E0=3C/strong=3E
+ =3C/td=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-left:10px=3Bpadding-right:10px=22 align=3D=22right=22=3E=3Cstrong=
+=3E0=3C/strong=3E=3C/td=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-left:10px=3Bpadding-right:10px=22 align=3D=22right=22=3E4=3C/td=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-left:10px=3Bpadding-right:10px=22 align=3D=22right=22=3E=3Cstrong=
+=3E0=3C/strong=3E=3C/td=3E
+ =3C/tr=3E
+ =3Ctr=3E
+ =3Ctd colspan=3D=226=22 bgcolor=3D=22=23888888=22 height=3D=221=22=3E=3C/t=
+d=3E
+ =3C/tr=3E
+ =3Ctr=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-right:40px=22 align=3D=22left=22 colspan=3D=225=22=3ETa=CC=A3m ti=
+=CC=81nh=3C/td=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-left:10px=3Bpadding-right:10px=3B=22 align=3D=22right=22=3E=3Cstron=
+g style=3D=22color: =23f00=3B font-weight: 700=3B=22=3E0=3C/strong=3E=3C/td=
+=3E
+ =3C/tr=3E
+ =3Ctr=3E
+ =3Ctd colspan=3D=226=22 bgcolor=3D=22=23888888=22 height=3D=221=22=3E=3C/t=
+d=3E
+ =3C/tr=3E
+ =3Ctr=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-right:40px=22 align=3D=22left=22 colspan=3D=225=22=3EPhi=CC=81 v=C3=
+=A2=CC=A3n chuy=C3=AA=CC=89n=3C/td=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+padding-left:10px=3Bpadding-right:10px=3B=22 align=3D=22right=22=3E=3Cstron=
+g style=3D=22color: =23f00=3B font-weight: 700=3B=22=3E30.000=3C/strong=3E=
+=3C/td=3E
+ =3C/tr=3E
+ =3Ctr=3E
+ =3Ctd colspan=3D=226=22 bgcolor=3D=22=23888888=22 height=3D=221=22=3E=3C/t=
+d=3E
+ =3C/tr=3E
+ =3Ctr=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+border-bottom:solid 3px=3Bpadding-right:40px=22 align=3D=22left=22 colspan=
+=3D=225=22=3ET=E1=BB=95ng c=E1=BB=99ng=3C/td=3E
+ =3Ctd style=3D=22font-family:Verdana,Tahoma,Sans-serif=3Bfont-size:12px=3B=
+border-bottom:solid 3px=3Bpadding-left:10px=3Bpadding-right:10px=3B=22 alig=
+n=3D=22right=22=3E=3Cstrong style=3D=22color: =23f00=3B font-weight: 700=3B=
+=22=3E30.000=3C/strong=3E=3C/td=3E
+ =3C/tr=3E
+ =3Ctr=3E
+ =3Ctd colspan=3D=226=22 bgcolor=3D=22=23888888=22 height=3D=221=22=3E=3C/t=
+d=3E
+ =3C/tr=3E
+ =3C/tbody=3E
+ =3C/table=3E
+ =3Cbr=3E
+ =C4=90=E1=BB=83 bi=E1=BA=BFt th=C3=AAm th=C3=B4ng tin, xin vui l=C3=B2ng t=
+ham kh=E1=BA=A3o =C4=91i=E1=BB=81u kho=E1=BA=A3n c=E1=BB=A7a ch=C3=BAng t=
+=C3=B4i.=3Cbr=3E
+ =3Cbr=3E
+ Tr=C3=A2n tr=E1=BB=8Dng=3Cbr=3E
+ =3Ca href=3D=22http://localhost:3000/=22 style=3D=22text-decoration:none=
+=3Bcolor:=235e5e5e=21important=22 target=3D=22=5Fblank=22=3E=3Cspan class=
+=3D=22il=22=3ELocalhost=3C/span=3E=3C/a=3E=3Cbr=3E
+ =3Cbr=3E
+ =3C/div=3E
+ =3C/td=3E
+ =3C/tr=3E
+ =3C/tbody=3E
+ =3C/table=3E
+ =3C/td=3E
+ =3C/tr=3E
+ =3C/tbody=3E
+ =3C/table=3E
+ =3C/td=3E
+ =3C/tr=3E
+ =3C/tbody=3E
+ =3C/table=3E
+ =3C/td=3E
+ =3C/tr=3E
+ =3C/tbody=3E
+ =3C/table=3E
+ =3C/td=3E
+ =3C/tr=3E
+ =3C/tbody=3E
+ =3C/table=3E
+ =3C/td=3E
+ =3C/tr=3E
+ =3C/tbody=3E
+=3C/table=3E
+
+--B_ALT_68bbdc4d76d50--</pre>
